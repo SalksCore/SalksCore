@@ -1,4 +1,3 @@
-![Dahrel Salks Banner](https://raw.githubusercontent.com/SalksCore/Dada972dev/master/assets/banner.jpg)
 
 <img alt="Coding" src="./assets/Hand%20Wave.gif" width='40' align="left"/><h2>Salut! Je suis Dahrel (salks) 👨🏻‍💻</h2>
 
