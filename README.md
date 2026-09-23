@@ -140,6 +140,23 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
 
 <br/>
 
+<!-- ───────────────────────────────────────────────────────────── livre d'or -->
+
+<p align="center"><picture>
+  <source media="(prefers-color-scheme: light)" srcset="./assets/section-guestbook-light.svg"/>
+  <img src="./assets/section-guestbook-dark.svg" width="100%" alt="Livre d'or"/>
+</picture></p>
+
+<p align="center">
+  <a href="https://github.com/SalksCore/SalksCore/issues/new?title=livre-d-or&body=Ton+message+ici+(140+caract%C3%A8res+max)"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/btn-guestbook-light.svg"/><img src="./assets/btn-guestbook-dark.svg" height="46" alt="Signer le livre d'or"/></picture></a>
+</p>
+
+<!-- GUESTBOOK:START -->
+<p align="center"><sub>Personne n'a encore signé. À toi l'honneur.</sub></p>
+<!-- GUESTBOOK:END -->
+
+<br/>
+
 <!-- ─────────────────────────────────────────────────────────────── contact -->
 
 <a name="contact"></a>

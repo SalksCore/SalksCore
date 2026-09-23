@@ -92,6 +92,7 @@ const SECTIONS = {
   journey: ['Mon parcours', "D'un premier plugin à l'indépendance", ''],
   stack: ['Compétences', 'Ce avec quoi je travaille', ''],
   activity: ['Activité', 'Mon année en code', ''],
+  guestbook: ["Livre d'or", 'Passe dire bonjour.', 'Ton message apparaît ici quelques secondes après.'],
   contact: ['Contact', 'Un projet en tête ? Parlons-en.', 'Décris ton besoin en quelques lignes, je reviens vers toi rapidement.'],
 };
 for (const [id, [eyebrow, title, intro]] of Object.entries(SECTIONS)) {
@@ -211,7 +212,7 @@ both('stack', (t) => {
 /* ----------------------------------------------------------------- boutons */
 
 // .btn-accent et .btn-plain du portfolio, rendus cliquables par le lien qui les entoure.
-const BUTTONS = { projects: ['Voir mes projets', true], contact: ['Me contacter', false], email: ['Écrire un email', true], discord: ['Discord · salks', false] };
+const BUTTONS = { projects: ['Voir mes projets', true], contact: ['Me contacter', false], guestbook: ["Signer le livre d'or", true], email: ['Écrire un email', true], discord: ['Discord · salks', false] };
 for (const [id, [label, accent]] of Object.entries(BUTTONS)) {
   both(`btn-${id}`, (t) => {
     const w = Math.round(label.length * 8.1 + 48), h = 46;
