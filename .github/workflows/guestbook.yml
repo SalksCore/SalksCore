@@ -1,0 +1,76 @@
+name: Livre d'or
+
+# Une issue titrée « livre-d-or » ajoute son message au README, puis est fermée.
+# Le texte est réduit à du texte brut : aucun HTML ni Markdown du visiteur n'atterrit dans le README.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: guestbook
+  cancel-in-progress: false
+
+jobs:
+  sign:
+    if: startsWith(github.event.issue.title, 'livre-d-or')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ajouter la signature
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const issue = context.payload.issue;
+            const login = issue.user.login.replace(/[^A-Za-z0-9-]/g, '');
+
+            const clean = (issue.body || '')
+              .replace(/Ton message ici \(140 caractères max\)/g, '')
+              .replace(/[<>`*_[\]()|#~\\!]/g, '')
+              .replace(/https?:\S+/g, '')
+              .replace(/\s+/g, ' ')
+              .trim()
+              .slice(0, 140);
+            const message = clean || 'est passé dire bonjour';
+
+            const START = '<!-- GUESTBOOK:START -->', END = '<!-- GUESTBOOK:END -->';
+            const readme = fs.readFileSync('README.md', 'utf8');
+            const [before, rest] = readme.split(START);
+            const [block, after] = rest.split(END);
+
+            const entries = block.split('\n').filter((l) => l.startsWith('<p align="center"><a href="https://github.com/'));
+            const date = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', timeZone: 'Europe/Paris' });
+            entries.unshift(`<p align="center"><a href="https://github.com/${login}"><b>@${login}</b></a> — ${message} <sub>· ${date}</sub></p>`);
+
+            fs.writeFileSync('README.md', `${before}${START}\n${entries.slice(0, 8).join('\n')}\n${END}${after}`);
+
+      - name: Commiter
+        env:
+          LOGIN: ${{ github.event.issue.user.login }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || (git commit -m "livre d'or: signature de @$LOGIN" && git pull --rebase && git push)
+
+      - name: Remercier et fermer
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.payload.issue.number,
+              body: 'Merci pour ta signature, elle est sur le profil.',
+            });
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed',
+              state_reason: 'completed',
+            });
