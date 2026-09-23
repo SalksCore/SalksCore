@@ -10,11 +10,11 @@ text{font-family:'Jakarta', 'Segoe UI', system-ui, sans-serif}
 </style>
 <g class="r" style="animation-delay:0s">
 <rect x="0.5" y=".5" width="216.5" height="119" rx="8" fill="#131216" stroke="#232028"/>
-<text x="108.75" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#f2f0f4">1 075<tspan fill="#9b7dff">.</tspan></text>
+<text x="108.75" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#f2f0f4">1 076<tspan fill="#9b7dff">.</tspan></text>
 <text x="108.75" y="90" text-anchor="middle" font-size="13" fill="#9a95a3">contributions en 12 mois</text></g>
 <g class="r" style="animation-delay:0.07s">
 <rect x="228" y=".5" width="216.5" height="119" rx="8" fill="#131216" stroke="#232028"/>
-<text x="336.25" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#f2f0f4">1 068<tspan fill="#9b7dff">.</tspan></text>
+<text x="336.25" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#f2f0f4">1 069<tspan fill="#9b7dff">.</tspan></text>
 <text x="336.25" y="90" text-anchor="middle" font-size="13" fill="#9a95a3">commits</text></g>
 <g class="r" style="animation-delay:0.14s">
 <rect x="455.5" y=".5" width="216.5" height="119" rx="8" fill="#131216" stroke="#232028"/>
