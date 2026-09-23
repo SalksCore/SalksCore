@@ -152,7 +152,7 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
 </p>
 
 <!-- GUESTBOOK:START -->
-<p align="center"><sub>Personne n'a encore signé. À toi l'honneur.</sub></p>
+<p align="center"><a href="https://github.com/SalksCore"><b>@SalksCore</b></a> — Test test <sub>· 23 sept.</sub></p>
 <!-- GUESTBOOK:END -->
 
 <br/>
