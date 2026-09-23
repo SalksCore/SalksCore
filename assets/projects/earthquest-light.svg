@@ -15,8 +15,8 @@ text{font-family:'Jakarta', 'Segoe UI', system-ui, sans-serif}
 <text x="24" y="36" class="mono" font-size="11" letter-spacing="1.6" fill="#7c5cff">MINECRAFT</text>
 <text x="416" y="36" text-anchor="end" class="mono" font-size="11" letter-spacing="1.6" fill="#d97706">EN COURS</text>
 <text x="24" y="76" font-size="23" font-weight="800" letter-spacing="-.3" fill="#1a171c">EarthQuest<tspan fill="#7c5cff">.</tspan></text>
-<text x="24" y="108" font-size="14" fill="#6a6472">Serveur Minecraft 1.7.10 moddé : mods Forge,</text>
-<text x="24" y="129" font-size="14" fill="#6a6472">plugins Bukkit/Crucible, API, site et panel.</text>
+<text x="24" y="108" font-size="14" fill="#6a6472">Serveur Minecraft moddé, Java 1.7.10 et Bedrock :</text>
+<text x="24" y="129" font-size="14" fill="#6a6472">mods Forge, plugins Bukkit, API, site et panel.</text>
 <rect x="24" y="160" width="49.599999999999994" height="26" rx="13" fill="#e9e6ea" stroke="#e2dee4"/><text x="48.8" y="177" text-anchor="middle" class="mono" font-size="11.5" fill="#6a6472">Java</text><rect x="79.6" y="160" width="56.5" height="26" rx="13" fill="#e9e6ea" stroke="#e2dee4"/><text x="107.85" y="177" text-anchor="middle" class="mono" font-size="11.5" fill="#6a6472">Forge</text><rect x="142.1" y="160" width="63.4" height="26" rx="13" fill="#e9e6ea" stroke="#e2dee4"/><text x="173.79999999999998" y="177" text-anchor="middle" class="mono" font-size="11.5" fill="#6a6472">Bukkit</text><rect x="211.5" y="160" width="63.4" height="26" rx="13" fill="#e9e6ea" stroke="#e2dee4"/><text x="243.2" y="177" text-anchor="middle" class="mono" font-size="11.5" fill="#6a6472">Gradle</text>
 </g>
 </svg>

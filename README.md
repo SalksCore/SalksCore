@@ -71,39 +71,9 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
   <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/myschool-light.svg"/><img src="./assets/projects/myschool-dark.svg" width="49%" alt="MySchool"/></picture>
   <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/pronote-bot-light.svg"/><img src="./assets/projects/pronote-bot-dark.svg" width="49%" alt="Bot PRONOTE"/></picture>
 </p>
-
-<details>
-<summary><b>Comment EarthQuest est construit</b> <sub>(diagramme, zoom et déplacement possibles)</sub></summary>
-<br/>
-
-```mermaid
-flowchart LR
-    subgraph Joueurs
-        JAVA["Client Java 1.7.10<br/>+ mods Forge"]
-        BED["Client Bedrock"]
-    end
-    subgraph Serveur
-        CRU["Crucible<br/>plugins Bukkit"]
-    end
-    subgraph Web
-        API["EQ-API"]
-        SITE["EQ-WEB · site"]
-        ADM["EQ-ADMIN · panel"]
-    end
-
-    JAVA <-->|QuestPacketManager| CRU
-    BED -->|EQ-BEDROCK| CRU
-    CRU <--> API
-    API --> SITE
-    API --> ADM
-
-    classDef box fill:#17151b,stroke:#9b7dff,color:#f2f0f4
-    classDef core fill:#211a36,stroke:#9b7dff,color:#f2f0f4,stroke-width:2px
-    class JAVA,BED,API,SITE,ADM box
-    class CRU core
-```
-
-</details>
+<p align="center">
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/kernpath-docs-light.svg"/><img src="./assets/projects/kernpath-docs-dark.svg" width="49%" alt="Kernpath Docs"/></picture>
+</p>
 
 <details>
 <summary><b>Et aussi</b></summary>
@@ -127,7 +97,7 @@ flowchart LR
 
 <p align="center"><picture>
   <source media="(prefers-color-scheme: light)" srcset="./assets/journey-light.svg"/>
-  <img src="./assets/journey-dark.svg" width="100%" alt="2025 : Java & Minecraft chez EarthQuestMC · 2024 : web chez NationsGlory / EarthQuestMC · 2023-2025 : PocketMine-MP chez EarthRebornMC"/>
+  <img src="./assets/journey-dark.svg" width="100%" alt="2025 : Java & Minecraft chez EarthQuestMC · 2024 : web chez EarthQuestMC · 2023-2025 : PocketMine-MP chez EarthRebornMC"/>
 </picture></p>
 
 <br/>
@@ -141,7 +111,7 @@ flowchart LR
 
 <p align="center"><picture>
   <source media="(prefers-color-scheme: light)" srcset="./assets/stack-light.svg"/>
-  <img src="./assets/stack-dark.svg" width="100%" alt="Java, TypeScript, Rust, Dart, SQL · Forge, Bukkit, Crucible, Paper, Mixins · Next.js, React, Tailwind, Tauri, Flutter · PostgreSQL, Redis, Supabase, Docker, Git"/>
+  <img src="./assets/stack-dark.svg" width="100%" alt="Langages : Java, TypeScript, JavaScript, PHP, Rust, Dart · Minecraft Java : Forge, Bukkit/Spigot, Crucible · Minecraft Bedrock : PocketMine-MP, Resource Packs · Web : Next.js, React, Docusaurus, Tailwind, Tauri, Flutter · Outils : PostgreSQL, Redis, Supabase, Docker, Git, GitHub Actions"/>
 </picture></p>
 
 <br/>

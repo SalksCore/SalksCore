@@ -111,7 +111,7 @@ ${intro ? `<text x="${W / 2}" y="130" text-anchor="middle" font-size="15" fill="
 
 const PROJECTS = [
   { file: 'earthquest', cat: 'Minecraft', state: 'wip', name: 'EarthQuest',
-    sub: ['Serveur Minecraft 1.7.10 moddé : mods Forge,', 'plugins Bukkit/Crucible, API, site et panel.'],
+    sub: ['Serveur Minecraft moddé, Java 1.7.10 et Bedrock :', 'mods Forge, plugins Bukkit, API, site et panel.'],
     tags: ['Java', 'Forge', 'Bukkit', 'Gradle'] },
   { file: 'kernpath', cat: 'Desktop', state: 'wip', name: 'Kernpath',
     sub: ['Mon poste de commande : projets locaux, Git,', 'GitHub, Trello et agents IA au même endroit.'],
@@ -128,6 +128,9 @@ const PROJECTS = [
   { file: 'pronote-bot', cat: 'Bot Discord', state: 'live', name: 'Bot PRONOTE',
     sub: ['Brief quotidien en image, notifications en', 'temps réel et préparation du sac.'],
     tags: ['TypeScript', 'discord.js', 'pawnote'] },
+  { file: 'kernpath-docs', cat: 'Documentation', state: 'wip', name: 'Kernpath Docs',
+    sub: ['La doc de Kernpath : installation, agents, Git,', 'intégrations et sécurité, en français.'],
+    tags: ['Docusaurus', 'React', 'MDX'] },
 ];
 const STATES = { live: 'En ligne', wip: 'En cours' };
 
@@ -160,8 +163,8 @@ ${tags}
 const JOURNEY = [
   { period: '2025 — auj.', title: 'Développement Java & Minecraft', org: 'EarthQuestMC', current: true,
     desc: 'Plugins et mods pour plusieurs versions du jeu, fonctionnalités et systèmes du serveur EarthQuest.' },
-  { period: '2024 — auj.', title: 'Développement web', org: 'NationsGlory / EarthQuestMC', current: true,
-    desc: "StaffTools, puis le panel d'administration, le site et les API publique et privée d'EarthQuest." },
+  { period: '2024 — auj.', title: 'Développement web', org: 'EarthQuestMC', current: true,
+    desc: "Panel d'administration, site web et API publique et privée du serveur EarthQuest, plus des bots Discord." },
   { period: '2023 — 2025', title: 'Développement Minecraft PocketMine-MP', org: 'EarthRebornMC',
     desc: 'Serveurs Bedrock sous PocketMine-MP 5 : plugins sur mesure et Resource Packs.' },
 ];
@@ -186,20 +189,23 @@ ${badge}
 /* ------------------------------------------------------------------- stack */
 
 const STACK = [
-  ['Langages', ['Java', 'TypeScript', 'Rust', 'Dart', 'SQL']],
-  ['Minecraft', ['Forge 1.7.10', 'Bukkit', 'Crucible', 'Paper', 'Mixins']],
-  ['Web & desktop', ['Next.js', 'React', 'Tailwind', 'Tauri', 'Flutter']],
-  ['Données & outils', ['PostgreSQL', 'Redis', 'Supabase', 'Docker', 'Git']],
+  ['Langages', ['Java', 'TypeScript', 'JavaScript', 'PHP', 'Rust', 'Dart']],
+  ['Minecraft', ['#Java', 'Forge 1.7.10', 'Bukkit / Spigot', '#Bedrock', 'PocketMine-MP', 'Resource Packs']],
+  ['Web & desktop', ['Next.js', 'React', 'Docusaurus', 'Tailwind', 'Tauri', 'Flutter']],
+  ['Données & outils', ['PostgreSQL', 'Redis', 'Supabase', 'Docker', 'Git', 'GitHub Actions']],
 ];
 both('stack', (t) => {
-  const GAP = 10, CW = (W - GAP * 3) / 4, H = 250;
+  const GAP = 10, CW = (W - GAP * 3) / 4, H = 284;
   const cols = STACK.map(([cat, items], i) => {
     const x = i * (CW + GAP);
-    const list = items.map((it, k) => `<g transform="translate(${x + 20} ${70 + k * 34})"><circle cx="3" cy="-4.5" r="3" fill="${t.accent}"/><text x="16" y="0" font-size="15" fill="${t.text}">${esc(it)}</text></g>`).join('');
+    // « #Titre » ouvre un sous-groupe (Java / Bedrock dans la colonne Minecraft)
+    const list = items.map((it, k) => it.startsWith('#')
+      ? `<text x="${x + 20}" y="${70 + k * 34}" font-size="13" font-weight="600" fill="${t.accent}">${esc(it.slice(1))}</text>`
+      : `<g transform="translate(${x + 20} ${70 + k * 34})"><circle cx="3" cy="-4.5" r="3" fill="${t.accent}"/><text x="16" y="0" font-size="15" fill="${t.text}">${esc(it)}</text></g>`).join('');
     return `<g class="r" style="animation-delay:${i * 0.08}s"><rect x="${x + 0.5}" y=".5" width="${CW - 1}" height="${H - 1}" rx="8" fill="${t.card}" stroke="${t.line}"/>
 <text x="${x + 20}" y="36" class="mono" font-size="11" letter-spacing="1.6" fill="${t.faint}">${esc(cat.toUpperCase())}</text>${list}</g>`;
   }).join('\n');
-  return svg(W, H, 'Compétences', fonts(400, 'mono'), cols);
+  return svg(W, H, 'Compétences', fonts(600, 400, 'mono'), cols);
 });
 
 /* ----------------------------------------------------------------- boutons */
