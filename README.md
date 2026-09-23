@@ -32,13 +32,13 @@
 <a name="a-propos"></a>
 <p align="center"><picture>
   <source media="(prefers-color-scheme: light)" srcset="./assets/section-about-light.svg"/>
-  <img src="./assets/section-about-dark.svg" width="100%" alt="Qui suis-je"/>
+  <img src="./assets/section-about-dark.svg" width="100%" alt="Développeur Minecraft et web"/>
 </picture></p>
 
 <p align="center">
-Je développe des serveurs Minecraft et les outils qui vont autour depuis plusieurs années.<br/>
-Plugins, mods Forge, systèmes de jeu complets, panels d'administration, sites vitrines :<br/>
-je prends le projet du schéma de base de données jusqu'à la mise en prod.
+Je développe pour Minecraft <b>Java</b> et <b>Bedrock</b> depuis plusieurs années :<br/>
+plugins Bukkit/Spigot et PocketMine-MP, mods Forge, systèmes de jeu complets.<br/>
+Côté web : panels d'administration, sites et API, du schéma de base de données jusqu'à la mise en prod.
 </p>
 
 <p align="center">
@@ -127,7 +127,7 @@ flowchart LR
 
 <p align="center"><picture>
   <source media="(prefers-color-scheme: light)" srcset="./assets/journey-light.svg"/>
-  <img src="./assets/journey-dark.svg" width="100%" alt="2026 : freelance · 2024 : EarthQuest · 2022 : premiers plugins"/>
+  <img src="./assets/journey-dark.svg" width="100%" alt="2025 : Java & Minecraft chez EarthQuestMC · 2024 : web chez NationsGlory / EarthQuestMC · 2023-2025 : PocketMine-MP chez EarthRebornMC"/>
 </picture></p>
 
 <br/>
@@ -170,23 +170,6 @@ flowchart LR
 
 <br/>
 
-<!-- ───────────────────────────────────────────────────────────── livre d'or -->
-
-<p align="center"><picture>
-  <source media="(prefers-color-scheme: light)" srcset="./assets/section-guestbook-light.svg"/>
-  <img src="./assets/section-guestbook-dark.svg" width="100%" alt="Livre d'or"/>
-</picture></p>
-
-<p align="center">
-  <a href="https://github.com/SalksCore/SalksCore/issues/new?title=livre-d-or&body=Ton+message+ici+(140+caract%C3%A8res+max)"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/btn-guestbook-light.svg"/><img src="./assets/btn-guestbook-dark.svg" height="46" alt="Signer le livre d'or"/></picture></a>
-</p>
-
-<!-- GUESTBOOK:START -->
-<p align="center"><sub>Personne n'a encore signé. À toi l'honneur.</sub></p>
-<!-- GUESTBOOK:END -->
-
-<br/>
-
 <!-- ─────────────────────────────────────────────────────────────── contact -->
 
 <a name="contact"></a>
@@ -205,5 +188,5 @@ flowchart LR
 
 <p align="center"><picture>
   <source media="(prefers-color-scheme: light)" srcset="./assets/footer-light.svg"/>
-  <img src="./assets/footer-dark.svg" width="100%" alt="Salks. — Un petit point. Une grande idée."/>
+  <img src="./assets/footer-dark.svg" width="100%" alt="Salks."/>
 </picture></p>

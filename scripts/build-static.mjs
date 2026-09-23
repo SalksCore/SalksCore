@@ -87,12 +87,11 @@ both('hero', (t, mode) => {
 
 // Même gabarit que <Section> du portfolio : pilule, grand titre, courte intro.
 const SECTIONS = {
-  about: ['Qui suis-je', 'Développeur Minecraft, et tout ce qui tourne autour', "Du plugin Java jusqu'à l'interface web : je couvre la chaîne complète."],
+  about: ['Qui suis-je', 'Développeur Minecraft et web', 'Minecraft Java et Bedrock, du plugin serveur jusqu’au site et aux API.'],
   projects: ['Mes projets', "Ce que j'ai construit", 'Des outils que je développe et que j’utilise au quotidien.'],
   journey: ['Mon parcours', "D'un premier plugin à l'indépendance", ''],
   stack: ['Compétences', 'Ce avec quoi je travaille', ''],
-  activity: ['Activité', 'Mon année en code', 'Générée chaque nuit à partir de mon activité GitHub.'],
-  guestbook: ["Livre d'or", 'Passe dire bonjour.', 'Ton message apparaît ici quelques secondes après.'],
+  activity: ['Activité', 'Mon année en code', ''],
   contact: ['Contact', 'Un projet en tête ? Parlons-en.', 'Décris ton besoin en quelques lignes, je reviens vers toi rapidement.'],
 };
 for (const [id, [eyebrow, title, intro]] of Object.entries(SECTIONS)) {
@@ -157,13 +156,14 @@ ${tags}
 
 /* ---------------------------------------------------------------- parcours */
 
+// Repris de la table Experience du portfolio.
 const JOURNEY = [
-  { period: '2026 — auj.', title: 'Développeur freelance', org: 'À mon compte', current: true,
-    desc: 'Plugins Minecraft sur mesure, serveurs complets et applications web.' },
-  { period: '2024 — auj.', title: 'Développeur backend & web', org: 'EarthQuest', current: true,
-    desc: 'Mods Forge et plugins Bukkit pour un serveur 1.7.10, plus le site et les outils autour.' },
-  { period: '2022', title: 'Premiers plugins', org: 'Apprentissage',
-    desc: "Débuts sur l'API Bukkit, découverte de Java et des bases du backend." },
+  { period: '2025 — auj.', title: 'Développement Java & Minecraft', org: 'EarthQuestMC', current: true,
+    desc: 'Plugins et mods pour plusieurs versions du jeu, fonctionnalités et systèmes du serveur EarthQuest.' },
+  { period: '2024 — auj.', title: 'Développement web', org: 'NationsGlory / EarthQuestMC', current: true,
+    desc: "StaffTools, puis le panel d'administration, le site et les API publique et privée d'EarthQuest." },
+  { period: '2023 — 2025', title: 'Développement Minecraft PocketMine-MP', org: 'EarthRebornMC',
+    desc: 'Serveurs Bedrock sous PocketMine-MP 5 : plugins sur mesure et Resource Packs.' },
 ];
 both('journey', (t) => {
   const RH = 96, GAP = 10, H = JOURNEY.length * (RH + GAP) - GAP;
@@ -205,7 +205,7 @@ both('stack', (t) => {
 /* ----------------------------------------------------------------- boutons */
 
 // .btn-accent et .btn-plain du portfolio, rendus cliquables par le lien qui les entoure.
-const BUTTONS = { projects: ['Voir mes projets', true], contact: ['Me contacter', false], guestbook: ["Signer le livre d'or", true], email: ['Écrire un email', true], discord: ['Discord · salks', false] };
+const BUTTONS = { projects: ['Voir mes projets', true], contact: ['Me contacter', false], email: ['Écrire un email', true], discord: ['Discord · salks', false] };
 for (const [id, [label, accent]] of Object.entries(BUTTONS)) {
   both(`btn-${id}`, (t) => {
     const w = Math.round(label.length * 8.1 + 48), h = 46;
@@ -217,7 +217,6 @@ for (const [id, [label, accent]] of Object.entries(BUTTONS)) {
 
 /* ------------------------------------------------------------- pied de page */
 
-both('footer', (t) => svg(W, 150, 'Salks.', fonts(800, 'mono'), `<g transform="translate(${W / 2 - 403 * 0.32 / 2} 70) scale(.32)">${logo(t, false)}</g>
-<text x="${W / 2}" y="112" text-anchor="middle" class="mono" font-size="11" letter-spacing="3" fill="${t.faint}">UN PETIT POINT. UNE GRANDE IDÉE.</text>`));
+both('footer', (t) => svg(W, 110, 'Salks.', fonts(800), `<g transform="translate(${W / 2 - 403 * 0.32 / 2} 72) scale(.32)">${logo(t, false)}</g>`));
 
 console.log('assets statiques générés');

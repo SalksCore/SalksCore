@@ -11,23 +11,23 @@ text{font-family:'Jakarta', 'Segoe UI', system-ui, sans-serif}
 </style>
 <g class="r" style="animation-delay:0s">
 <rect x=".5" y="0.5" width="899" height="95" rx="8" fill="#f3f1f3" stroke="#e2dee4"/>
-<text x="28" y="40" class="mono" font-size="11" letter-spacing="1.6" fill="#97919e">2026 — AUJ.</text>
-<text x="200" y="40" font-size="18" font-weight="600" fill="#1a171c">Développeur freelance<tspan font-size="14" font-weight="400" fill="#97919e">  — À mon compte</tspan></text>
-<rect x="539.4" y="23" width="70" height="22" rx="11" fill="#ece7ff"/><text x="574.4" y="38" text-anchor="middle" font-size="11" fill="#7c5cff">En cours</text>
-<text x="200" y="69" font-size="14" fill="#6a6472">Plugins Minecraft sur mesure, serveurs complets et applications web.</text>
+<text x="28" y="40" class="mono" font-size="11" letter-spacing="1.6" fill="#97919e">2025 — AUJ.</text>
+<text x="200" y="40" font-size="18" font-weight="600" fill="#1a171c">Développement Java &amp; Minecraft<tspan font-size="14" font-weight="400" fill="#97919e">  — EarthQuestMC</tspan></text>
+<rect x="631.2" y="23" width="70" height="22" rx="11" fill="#ece7ff"/><text x="666.2" y="38" text-anchor="middle" font-size="11" fill="#7c5cff">En cours</text>
+<text x="200" y="69" font-size="14" fill="#6a6472">Plugins et mods pour plusieurs versions du jeu, fonctionnalités et systèmes du serveur EarthQuest.</text>
 </g>
 <g class="r" style="animation-delay:0.1s">
 <rect x=".5" y="106.5" width="899" height="95" rx="8" fill="#f3f1f3" stroke="#e2dee4"/>
 <text x="28" y="146" class="mono" font-size="11" letter-spacing="1.6" fill="#97919e">2024 — AUJ.</text>
-<text x="200" y="146" font-size="18" font-weight="600" fill="#1a171c">Développeur backend &amp; web<tspan font-size="14" font-weight="400" fill="#97919e">  — EarthQuest</tspan></text>
-<rect x="565" y="129" width="70" height="22" rx="11" fill="#ece7ff"/><text x="600" y="144" text-anchor="middle" font-size="11" fill="#7c5cff">En cours</text>
-<text x="200" y="175" font-size="14" fill="#6a6472">Mods Forge et plugins Bukkit pour un serveur 1.7.10, plus le site et les outils autour.</text>
+<text x="200" y="146" font-size="18" font-weight="600" fill="#1a171c">Développement web<tspan font-size="14" font-weight="400" fill="#97919e">  — NationsGlory / EarthQuestMC</tspan></text>
+<rect x="612.5999999999999" y="129" width="70" height="22" rx="11" fill="#ece7ff"/><text x="647.5999999999999" y="144" text-anchor="middle" font-size="11" fill="#7c5cff">En cours</text>
+<text x="200" y="175" font-size="14" fill="#6a6472">StaffTools, puis le panel d'administration, le site et les API publique et privée d'EarthQuest.</text>
 </g>
 <g class="r" style="animation-delay:0.2s">
 <rect x=".5" y="212.5" width="899" height="95" rx="8" fill="#f3f1f3" stroke="#e2dee4"/>
-<text x="28" y="252" class="mono" font-size="11" letter-spacing="1.6" fill="#97919e">2022</text>
-<text x="200" y="252" font-size="18" font-weight="600" fill="#1a171c">Premiers plugins<tspan font-size="14" font-weight="400" fill="#97919e">  — Apprentissage</tspan></text>
+<text x="28" y="252" class="mono" font-size="11" letter-spacing="1.6" fill="#97919e">2023 — 2025</text>
+<text x="200" y="252" font-size="18" font-weight="600" fill="#1a171c">Développement Minecraft PocketMine-MP<tspan font-size="14" font-weight="400" fill="#97919e">  — EarthRebornMC</tspan></text>
 
-<text x="200" y="281" font-size="14" fill="#6a6472">Débuts sur l'API Bukkit, découverte de Java et des bases du backend.</text>
+<text x="200" y="281" font-size="14" fill="#6a6472">Serveurs Bedrock sous PocketMine-MP 5 : plugins sur mesure et Resource Packs.</text>
 </g>
 </svg>
