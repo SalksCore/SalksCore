@@ -12,20 +12,20 @@ text{font-family:'Jakarta', 'Segoe UI', system-ui, sans-serif}
 </style>
 <rect x=".5" y=".5" width="899" height="195" rx="8" fill="#131216" stroke="#232028"/>
 <text x="28" y="40" class="mono" font-size="11" letter-spacing="1.6" fill="#6a6572">LANGAGES</text>
-<g transform="translate(28 62)"><g class="bar"><rect x="0.0" width="312.0" height="10" rx="2" fill="#b3a0ff"/><rect x="314.0" width="281.5" height="10" rx="2" fill="#7458d6"/><rect x="597.5" width="173.4" height="10" rx="2" fill="#4b3a8f"/><rect x="772.9" width="37.3" height="10" rx="2" fill="#2e2450"/><rect x="812.2" width="29.3" height="10" rx="2" fill="#9a95a3"/></g></g>
+<g transform="translate(28 62)"><g class="bar"><rect x="0.0" width="306.3" height="10" rx="2" fill="#b3a0ff"/><rect x="308.3" width="276.4" height="10" rx="2" fill="#7458d6"/><rect x="586.7" width="185.5" height="10" rx="2" fill="#4b3a8f"/><rect x="774.2" width="36.6" height="10" rx="2" fill="#2e2450"/><rect x="812.8" width="28.7" height="10" rx="2" fill="#9a95a3"/></g></g>
 <g class="r" style="animation-delay:0.40s"><rect x="28" y="108" width="10" height="10" rx="2" fill="#b3a0ff"/>
 <text x="46" y="118" font-size="14" font-weight="600" fill="#f2f0f4">TypeScript</text>
-<text x="215" y="118" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">37.2%</text></g>
+<text x="215" y="118" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">36.5%</text></g>
 <g class="r" style="animation-delay:0.46s"><rect x="239" y="108" width="10" height="10" rx="2" fill="#7458d6"/>
 <text x="257" y="118" font-size="14" font-weight="600" fill="#f2f0f4">CSS</text>
-<text x="426" y="118" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">33.6%</text></g>
+<text x="426" y="118" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">33.0%</text></g>
 <g class="r" style="animation-delay:0.52s"><rect x="450" y="108" width="10" height="10" rx="2" fill="#4b3a8f"/>
 <text x="468" y="118" font-size="14" font-weight="600" fill="#f2f0f4">JavaScript</text>
-<text x="637" y="118" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">20.8%</text></g>
+<text x="637" y="118" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">22.2%</text></g>
 <g class="r" style="animation-delay:0.58s"><rect x="661" y="108" width="10" height="10" rx="2" fill="#2e2450"/>
 <text x="679" y="118" font-size="14" font-weight="600" fill="#f2f0f4">PHP</text>
-<text x="848" y="118" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">4.7%</text></g>
+<text x="848" y="118" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">4.6%</text></g>
 <g class="r" style="animation-delay:0.64s"><rect x="28" y="142" width="10" height="10" rx="2" fill="#9a95a3"/>
 <text x="46" y="152" font-size="14" font-weight="600" fill="#f2f0f4">HTML</text>
-<text x="215" y="152" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">3.7%</text></g>
+<text x="215" y="152" text-anchor="end" class="mono" font-size="12" fill="#9a95a3">3.6%</text></g>
 </svg>
