@@ -160,18 +160,23 @@ function memory() {
 }
 // ─── Portfolio · Apollon : la lyre devant le soleil ─────────────────────────
 function lyre() {
-  const sun = `<g transform="translate(${CX} 430)">
-    <circle r="150" opacity=".55"/><circle r="118" opacity=".3" stroke-dasharray="4 12"/>
-    ${Array.from({length: 24}, (_, i) => `<line x1="0" y1="-${i % 2 ? 180 : 172}" x2="0" y2="-${i % 2 ? 214 : 250}" transform="rotate(${i * 15})" opacity="${i % 2 ? 0.5 : 0.9}"/>`).join('')}
+  const sun = `<g transform="translate(${CX} 300)">
+    <circle r="96" opacity=".6"/><circle r="70" opacity=".3" stroke-dasharray="4 12"/>
+    ${Array.from({length: 24}, (_, i) => `<line x1="0" y1="-${i % 2 ? 118 : 112}" x2="0" y2="-${i % 2 ? 150 : 180}" transform="rotate(${i * 15})" opacity="${i % 2 ? 0.45 : 0.9}"/>`).join('')}
   </g>`;
-  const arm = (s) => `<path d="M${CX + s * 70} 900 C${CX + s * 170} 820 ${CX + s * 190} 690 ${CX + s * 120} 600 C${CX + s * 80} 550 ${CX + s * 110} 505 ${CX + s * 160} 500" stroke-width="7"/>
-    <circle cx="${CX + s * 168}" cy="500" r="12" fill="currentColor"/>`;
-  const box = `<path d="M${CX - 95} 895 C${CX - 95} 965 ${CX + 95} 965 ${CX + 95} 895 Z"/><circle cx="${CX}" cy="918" r="16" opacity=".7"/>`;
-  const bar = `<line x1="${CX - 135}" y1="610" x2="${CX + 135}" y2="610" stroke-width="7"/>`;
-  const strings = [-48, -24, 0, 24, 48].map((d) => `<line x1="${CX + d}" y1="610" x2="${CX + d}" y2="895" stroke-width="2" opacity=".85"/>`).join('');
-  const leaf = (x, y, a) => `<ellipse cx="${x}" cy="${y}" rx="26" ry="9" transform="rotate(${a} ${x} ${y})" opacity=".6"/>`;
-  const laurel = [0, 1, 2, 3, 4].map((i) => leaf(CX - 230 + i * 12, 1000 - i * 50, -60 + i * 8) + leaf(CX + 230 - i * 12, 1000 - i * 50, 60 - i * 8)).join('');
-  return sun + arm(-1) + arm(1) + bar + strings + box + laurel;
+  // bras en cornes : ils s'écartent, se resserrent puis s'enroulent vers l'extérieur
+  const arm = (s) => `<path d="M${CX + s * 70} 900 C${CX + s * 175} 880 ${CX + s * 205} 760 ${CX + s * 160} 660 C${CX + s * 125} 585 ${CX + s * 150} 505 ${CX + s * 215} 490 C${CX + s * 255} 482 ${CX + s * 262} 530 ${CX + s * 232} 540" stroke-width="7"/>
+    <circle cx="${CX + s * 232}" cy="540" r="10" fill="currentColor"/>`;
+  const box = `<rect x="${CX - 100}" y="880" width="200" height="70" rx="22"/><circle cx="${CX}" cy="915" r="14" opacity=".7"/>
+    <line x1="${CX - 60}" y1="966" x2="${CX + 60}" y2="966" opacity=".5"/>`;
+  const bar = `<line x1="${CX - 180}" y1="600" x2="${CX + 180}" y2="600" stroke-width="8"/>
+    <circle cx="${CX - 180}" cy="600" r="9" fill="currentColor"/><circle cx="${CX + 180}" cy="600" r="9" fill="currentColor"/>`;
+  const strings = [-60, -30, 0, 30, 60].map((d) => `<line x1="${CX + d}" y1="600" x2="${CX + d * 0.8}" y2="880" stroke-width="2.2" opacity=".85"/>`).join('');
+  const pegs = [-60, -30, 0, 30, 60].map((d) => `<circle cx="${CX + d}" cy="600" r="5" fill="currentColor" opacity=".8"/>`).join('');
+  const leaf = (x, y, a) => `<ellipse cx="${x}" cy="${y}" rx="24" ry="8" transform="rotate(${a} ${x} ${y})" opacity=".55"/>`;
+  const laurel = [0, 1, 2, 3, 4, 5].map((i) => leaf(CX - 270 + i * 10, 1060 - i * 55, -70 + i * 9) + leaf(CX + 270 - i * 10, 1060 - i * 55, 70 - i * 9)).join('')
+    + `<path d="M${CX - 250} 1080 Q${CX} 1130 ${CX + 250} 1080" opacity=".5"/>`;
+  return sun + arm(-1) + arm(1) + bar + strings + pegs + box + laurel;
 }
 
 // ─── GameOfLife · Prométhée : le feu volé, au-dessus des cellules ───────────
