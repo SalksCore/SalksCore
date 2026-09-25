@@ -1,6 +1,6 @@
 <!--
   Profil de Salks. — DA : Plus Jakarta Sans, JetBrains Mono, un seul violet.
-  assets/*          → node scripts/build-static.mjs
+  assets/*          → node scripts/build-static.mjs (panthéon et frises : scripts/pantheon.mjs)
   assets/generated/ → régénéré chaque nuit par .github/workflows/profile.yml
 -->
 
@@ -25,7 +25,7 @@
   <img src="./assets/generated/tiles-dark.svg" width="100%" alt="Chiffres clés de l'année"/>
 </picture></p>
 
-<br/>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/meander-light.svg"/><img src="./assets/meander-dark.svg" width="100%" alt=""/></picture></p>
 
 <!-- ─────────────────────────────────────────────────────────── qui suis-je -->
 
@@ -49,7 +49,7 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
   <sub><code>BASE</code>&nbsp; France · Remote &nbsp;&nbsp;&nbsp; <code>ÉQUIPE</code>&nbsp; <a href="https://github.com/EarthQuestMc">@EarthQuestMc</a> &nbsp;&nbsp;&nbsp; <code>DISCORD</code>&nbsp; salks</sub>
 </p>
 
-<br/>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/meander-light.svg"/><img src="./assets/meander-dark.svg" width="100%" alt=""/></picture></p>
 
 <!-- ─────────────────────────────────────────────────────────────── projets -->
 
@@ -59,33 +59,37 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
   <img src="./assets/section-projects-dark.svg" width="100%" alt="Ce que j'ai construit"/>
 </picture></p>
 
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/pantheon-light.svg"/><img src="./assets/pantheon-dark.svg" width="100%" alt="Le panthéon : Chronos, Héphaïstos, Hermès, Mnémosyne, Gaïa, Athéna"/></picture></p>
+
 <p align="center">
-  <a href="https://github.com/EarthQuestMc"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/earthquest-light.svg"/><img src="./assets/projects/earthquest-dark.svg" width="49%" alt="EarthQuest"/></picture></a>
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/kernpath-light.svg"/><img src="./assets/projects/kernpath-dark.svg" width="49%" alt="Kernpath"/></picture>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/chronos-light.svg"/><img src="./assets/projects/chronos-dark.svg" width="49%" alt="Chronos · la doc de tous mes projets"/></picture>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/kern-light.svg"/><img src="./assets/projects/kern-dark.svg" width="49%" alt="Kern · Héphaïstos"/></picture>
+</p>
+<p align="center">
+  <a href="https://github.com/SalksCore/hermes-bot"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/hermes-light.svg"/><img src="./assets/projects/hermes-dark.svg" width="49%" alt="Hermès · bot Discord"/></picture></a>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/mnemosyne-light.svg"/><img src="./assets/projects/mnemosyne-dark.svg" width="49%" alt="Mnémosyne · bot PRONOTE"/></picture>
+</p>
+<p align="center">
+  <a href="https://github.com/EarthQuestMc"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/earthquest-light.svg"/><img src="./assets/projects/earthquest-dark.svg" width="49%" alt="EarthQuest · Gaïa"/></picture></a>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/myschool-light.svg"/><img src="./assets/projects/myschool-dark.svg" width="49%" alt="MySchool · Athéna"/></picture>
 </p>
 <p align="center">
   <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/portfolio-light.svg"/><img src="./assets/projects/portfolio-dark.svg" width="49%" alt="Portfolio"/></picture>
   <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/gameoflife-light.svg"/><img src="./assets/projects/gameoflife-dark.svg" width="49%" alt="GameOfLife"/></picture>
-</p>
-<p align="center">
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/myschool-light.svg"/><img src="./assets/projects/myschool-dark.svg" width="49%" alt="MySchool"/></picture>
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/pronote-bot-light.svg"/><img src="./assets/projects/pronote-bot-dark.svg" width="49%" alt="Bot PRONOTE"/></picture>
-</p>
-<p align="center">
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/kernpath-docs-light.svg"/><img src="./assets/projects/kernpath-docs-dark.svg" width="49%" alt="Kernpath Docs"/></picture>
 </p>
 
 <details>
 <summary><b>Et aussi</b></summary>
 <br/>
 
-- **Cairn** — l'ancêtre de Kernpath : Git, GitHub et Trello dans une app native Tauri.
+- **Kernpath et Cairn** — les ancêtres de Kern : Git, GitHub et Trello dans une app native Tauri.
+- **Kernpath Docs** — remplacée par Chronos, qui documente désormais tous les projets.
 - **Satisfactory** — mes forks de [FicsIt-Networks](https://github.com/SalksCore/FicsIt-Networks) et [FicsIt-Cam](https://github.com/SalksCore/FicsIt-Cam) (C++, Unreal).
 - **MicroBit** — [le code de mes cartes micro:bit](https://github.com/SalksCore/MicroBit).
 
 </details>
 
-<br/>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/meander-light.svg"/><img src="./assets/meander-dark.svg" width="100%" alt=""/></picture></p>
 
 <!-- ────────────────────────────────────────────────────────────── parcours -->
 
@@ -114,7 +118,7 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
   <img src="./assets/stack-dark.svg" width="100%" alt="Langages : Java, TypeScript, JavaScript, PHP, Rust, Dart · Minecraft Java : Forge, Bukkit/Spigot, Crucible · Minecraft Bedrock : PocketMine-MP, Resource Packs · Web : Next.js, React, Docusaurus, Tailwind, Tauri, Flutter · Outils : PostgreSQL, Redis, Supabase, Docker, Git, GitHub Actions"/>
 </picture></p>
 
-<br/>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/meander-light.svg"/><img src="./assets/meander-dark.svg" width="100%" alt=""/></picture></p>
 
 <!-- ────────────────────────────────────────────────────────────── activité -->
 
@@ -155,7 +159,7 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
 
 <!-- GUESTBOOK:END -->
 
-<br/>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/meander-light.svg"/><img src="./assets/meander-dark.svg" width="100%" alt=""/></picture></p>
 
 <!-- ─────────────────────────────────────────────────────────────── contact -->
 

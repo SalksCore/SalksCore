@@ -4,6 +4,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { THEMES, fonts, SANS, MONO, esc, write, REVEAL, ROOT } from './theme.mjs';
+import { PANTHEON, byId, meander, rng, W as AW, H as AH } from './pantheon.mjs';
 
 const W = 900;
 const svg = (w, h, label, css, body) => `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">
@@ -68,6 +69,8 @@ both('hero', (t, mode) => {
   <rect class="glow" width="${W}" height="${H}" fill="url(#g1)"/>
   <rect class="glow2" width="${W}" height="${H}" fill="url(#g2)"/>
 </g>
+<g transform="translate(0 26)" class="r" style="animation-delay:1.1s">${meander(W, {step: 22, h: 14, color: t.accent, opacity: mode === 'dark' ? 0.22 : 0.3})}</g>
+<g transform="translate(${W} ${H - 26}) rotate(180)" class="r" style="animation-delay:1.1s">${meander(W, {step: 22, h: 14, color: t.accent, opacity: mode === 'dark' ? 0.22 : 0.3})}</g>
 <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="12" fill="none" stroke="${t.panelLine}"/>
 <g transform="translate(${cx - (LOGO_ADV + 39) / 2} 196)">${logo(t)}</g>
 <g transform="translate(0 264)"><g class="r" style="animation-delay:.6s">${tagline}</g></g>`);
@@ -88,7 +91,7 @@ both('hero', (t, mode) => {
 // Même gabarit que <Section> du portfolio : pilule, grand titre, courte intro.
 const SECTIONS = {
   about: ['Qui suis-je', 'Développeur Minecraft et web', 'Minecraft Java et Bedrock, du plugin serveur jusqu’au site et aux API.'],
-  projects: ['Mes projets', "Ce que j'ai construit", 'Des outils que je développe et que j’utilise au quotidien.'],
+  projects: ['Mes projets', "Ce que j'ai construit", 'Chaque projet porte le nom d’une divinité grecque. Tous se documentent sur Chronos.'],
   journey: ['Mon parcours', "D'un premier plugin à l'indépendance", ''],
   stack: ['Compétences', 'Ce avec quoi je travaille', ''],
   activity: ['Activité', 'Mon année en code', ''],
@@ -108,36 +111,98 @@ ${intro ? `<text x="${W / 2}" y="130" text-anchor="middle" font-size="15" fill="
   });
 }
 
+
+/* --------------------------------------------------------------- panthéon */
+
+// Une colonne par divinité, comme le sélecteur de projets de Chronos :
+// fond du projet, étoiles qui scintillent, nom grec en creux, dessin au trait néon.
+both('pantheon', (t, mode) => {
+  const H = 440, GAP = 6, CW = (W - GAP * (PANTHEON.length - 1)) / PANTHEON.length;
+  const cols = PANTHEON.map((p, i) => {
+    const x = i * (CW + GAP), r = rng(p.seed);
+    const stars = Array.from({ length: 46 }, (_, k) => {
+      const tw = k % 4 === 0 ? ` class="tw" style="animation-delay:${(r() * 4).toFixed(2)}s"` : '';
+      return `<circle cx="${(r() * AW).toFixed(1)}" cy="${(r() * AH).toFixed(1)}" r="${(1 + r() * 2.4).toFixed(1)}" opacity="${(0.2 + r() * 0.5).toFixed(2)}"${tw}/>`;
+    }).join('');
+    return `<g class="r" style="animation-delay:${(0.08 * i).toFixed(2)}s">
+<clipPath id="k${i}"><rect x="${x}" width="${CW}" height="${H}" rx="8"/></clipPath>
+<g clip-path="url(#k${i})">
+<svg x="${x}" width="${CW}" height="${H}" viewBox="0 0 ${AW} ${AH}" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="b${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e0d11"/><stop offset="1" stop-color="${p.deep}"/></linearGradient>
+    <radialGradient id="g${i}" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="${p.hue}" stop-opacity=".4"/><stop offset="1" stop-color="${p.hue}" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="${AW}" height="${AH}" fill="url(#b${i})"/>
+  <rect width="${AW}" height="${AH}" fill="url(#dots)"/>
+  <rect width="${AW}" height="${AH}" fill="url(#g${i})" class="breathe" style="animation-delay:${-i * 1.1}s"/>
+  <g fill="${p.hue}">${stars}</g>
+  <text x="-${AH / 2}" y="300" transform="rotate(-90)" text-anchor="middle" font-weight="800" font-size="150" letter-spacing="22" fill="none" stroke="${p.hue}" stroke-opacity=".2" stroke-width="2.5">${p.greek}</text>
+  <g transform="translate(400 470) scale(.9) translate(-400 -600)" fill="none" stroke="${p.hue}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#neon)" class="breathe" style="animation-delay:${-i * 0.7}s">${p.art}</g>
+</svg>
+<rect x="${x}" y="${H - 150}" width="${CW}" height="150" fill="url(#shade)"/>
+</g>
+<text x="${x + 16}" y="${H - 76}" class="mono" font-size="10" letter-spacing="1.4" fill="#6a6572">${String(i + 1).padStart(2, '0')} / ${String(PANTHEON.length).padStart(2, '0')}</text>
+<text x="${x + 16}" y="${H - 52}" class="mono" font-size="10" letter-spacing="1.4" fill="${p.hue}">${esc(p.name.toUpperCase())}</text>
+<text x="${x + 16}" y="${H - 22}" font-size="${p.god.length > 8 ? 19 : 22}" font-weight="800" letter-spacing="-.4" fill="#f2f0f4">${esc(p.god)}<tspan fill="${p.hue}">.</tspan></text>
+<rect x="${x + 0.5}" y=".5" width="${CW - 1}" height="${H - 1}" rx="8" fill="none" stroke="${mode === 'dark' ? t.line : '#2a2630'}"/>
+</g>`;
+  }).join('\n');
+  return svg(W, H, 'Le panthéon : Chronos, Héphaïstos, Hermès, Mnémosyne, Gaïa, Athéna', `${fonts(800, 'mono')}
+.breathe{animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.6}}
+.tw{animation:tw 4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}`, `<defs>
+  <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.5" fill="#fff" opacity=".07"/></pattern>
+  <filter id="neon" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e0d11" stop-opacity="0"/><stop offset=".6" stop-color="#0e0d11" stop-opacity=".85"/><stop offset="1" stop-color="#0e0d11"/></linearGradient>
+</defs>
+${cols}`);
+});
+
+// Frise de grecques qui sépare les sections, avec le point de la marque au centre.
+both('meander', (t, mode) => {
+  const H = 34, side = (W - 60) / 2;
+  const op = mode === 'dark' ? 0.35 : 0.45;
+  return svg(W, H, '', '', `<g transform="translate(0 7)">${meander(side, { step: 20, h: 18, color: t.accent, opacity: op })}</g>
+<g transform="translate(${side + 60} 7)">${meander(side, { step: 20, h: 18, color: t.accent, opacity: op })}</g>
+<circle cx="${W / 2}" cy="17" r="5" fill="${t.accent}"/><circle cx="${W / 2}" cy="17" r="11" fill="none" stroke="${t.accent}" opacity=".4"/>`);
+});
+
 /* --------------------------------------------------------- cartes projets */
 
 const PROJECTS = [
-  { file: 'earthquest', cat: 'Minecraft', state: 'wip', name: 'EarthQuest',
-    sub: ['Serveur Minecraft moddé, Java 1.7.10 et Bedrock :', 'mods Forge, plugins Bukkit, API, site et panel.'],
-    tags: ['Java', 'Forge', 'Bukkit', 'Gradle'] },
-  { file: 'kernpath', cat: 'Desktop', state: 'wip', name: 'Kernpath',
+  { file: 'chronos', god: 'chronos', cat: 'Documentation', state: 'wip', name: 'Chronos',
+    sub: ['La doc de tous mes projets : une page par', 'projet, français / anglais et un chat, la Pythie.'],
+    tags: ['Docusaurus', 'React', 'TypeScript'] },
+  { file: 'kern', god: 'kern', cat: 'Desktop', state: 'wip', name: 'Kern',
     sub: ['Mon poste de commande : projets locaux, Git,', 'GitHub, Trello et agents IA au même endroit.'],
     tags: ['Tauri', 'Rust', 'React', 'TypeScript'] },
+  { file: 'hermes', god: 'hermes', cat: 'Bot Discord', state: 'live', name: 'Hermès',
+    sub: ['Le bot du freelance, de la commande à l’avis :', 'tickets, automod, bienvenue et panel web.'],
+    tags: ['TypeScript', 'discord.js', 'MySQL'] },
+  { file: 'mnemosyne', god: 'mnemosyne', cat: 'Bot PRONOTE', state: 'live', name: 'Mnémosyne',
+    sub: ['Open source. Brief quotidien en image,', 'notifications en temps réel, sac du lendemain.'],
+    tags: ['TypeScript', 'discord.js', 'pawnote'] },
+  { file: 'earthquest', god: 'gaia', cat: 'Minecraft', state: 'wip', name: 'EarthQuest',
+    sub: ['Serveur Minecraft moddé, Java 1.7.10 et Bedrock :', 'mods Forge, plugins Bukkit, API, site et panel.'],
+    tags: ['Java', 'Forge', 'Bukkit', 'Gradle'] },
+  { file: 'myschool', god: 'athena', cat: 'Mobile & desktop', state: 'live', name: 'MySchool',
+    sub: ['Mon classeur archivé sur Windows et Android.', 'Le scanner est piloté en HTTP, sans driver.'],
+    tags: ['Flutter', 'Dart', 'Supabase'] },
   { file: 'portfolio', cat: 'Web', state: 'wip', name: 'Portfolio',
     sub: ['Site bilingue piloté par la base, avec un studio', 'local pour tout modifier sans toucher au code.'],
     tags: ['Next.js', 'Prisma', 'PostgreSQL'] },
   { file: 'gameoflife', cat: 'Jeu · temps réel', state: 'wip', name: 'GameOfLife',
     sub: ['Jeu multijoueur : API temps réel, client mobile', "et panel d'administration complet."],
     tags: ['TypeScript', 'Fastify', 'Socket.IO'] },
-  { file: 'myschool', cat: 'Mobile & desktop', state: 'live', name: 'MySchool',
-    sub: ['Mon classeur archivé sur Windows et Android.', 'Le scanner est piloté en HTTP, sans driver.'],
-    tags: ['Flutter', 'Dart', 'Supabase'] },
-  { file: 'pronote-bot', cat: 'Bot Discord', state: 'live', name: 'Bot PRONOTE',
-    sub: ['Brief quotidien en image, notifications en', 'temps réel et préparation du sac.'],
-    tags: ['TypeScript', 'discord.js', 'pawnote'] },
-  { file: 'kernpath-docs', cat: 'Documentation', state: 'wip', name: 'Kernpath Docs',
-    sub: ['La doc de Kernpath : installation, agents, Git,', 'intégrations et sécurité, en français.'],
-    tags: ['Docusaurus', 'React', 'MDX'] },
 ];
 const STATES = { live: 'En ligne', wip: 'En cours' };
 
 for (const p of PROJECTS) {
-  both(`projects/${p.file}`, (t) => {
+  const g = p.god && byId[p.god];
+  both(`projects/${p.file}`, (t, mode) => {
     const CW = 440, CH = 212;
+    const hue = g ? g.hue : t.accent;
     let x = 24;
     const tags = p.tags.map((tag) => {
       const w = monoW(tag, 11.5) + 22;
@@ -146,11 +211,34 @@ for (const p of PROJECTS) {
       return s;
     }).join('');
     const stateCol = t[p.state];
-    return svg(CW, CH, p.name, fonts(800, 600, 400, 'mono'), `<rect x=".5" y=".5" width="${CW - 1}" height="${CH - 1}" rx="8" fill="${t.card}" stroke="${t.line}"/>
-<g class="r">
-<text x="24" y="36" class="mono" font-size="11" letter-spacing="1.6" fill="${t.accent}">${esc(p.cat.toUpperCase())}</text>
+    // l'emblème du dieu en filigrane à droite ; sans dieu, une frise de grecques
+    const emblem = g
+      ? `<svg x="${CW - 138}" y="50" width="138" height="${CH - 50}" viewBox="100 150 600 900" preserveAspectRatio="xMidYMin slice">
+  <g fill="none" stroke="${g.hue}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="${mode === 'dark' ? 0.5 : 0.45}" class="breathe">${g.art}</g></svg>`
+      : `<g transform="translate(${CW - 150} ${CH - 36})">${meander(130, { step: 18, h: 14, color: t.accent, opacity: 0.35 })}</g>`;
+    const eyebrow = g
+      ? `${esc(p.cat.toUpperCase())}<tspan fill="${t.faint}"> · </tspan><tspan fill="${g.hue}">${esc(g.god.toUpperCase())}</tspan>`
+      : esc(p.cat.toUpperCase());
+    return svg(CW, CH, g ? `${p.name} · ${g.god}` : p.name, `${fonts(800, 600, 400, 'mono')}
+.breathe{animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:1}50%{opacity:.55}}`, `<defs>
+  <clipPath id="c"><rect x="1" y="1" width="${CW - 2}" height="${CH - 2}" rx="7.5"/></clipPath>
+  <radialGradient id="h" cx="1" cy=".35" r=".75"><stop offset="0" stop-color="${hue}" stop-opacity="${mode === 'dark' ? 0.22 : 0.14}"/><stop offset="1" stop-color="${hue}" stop-opacity="0"/></radialGradient>
+  <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset=".62" stop-color="${t.card}"/><stop offset=".86" stop-color="${t.card}" stop-opacity="0"/></linearGradient>
+  <linearGradient id="top" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${hue}"/><stop offset=".6" stop-color="${hue}" stop-opacity="0"/></linearGradient>
+</defs>
+<rect x=".5" y=".5" width="${CW - 1}" height="${CH - 1}" rx="8" fill="${t.card}"/>
+<g clip-path="url(#c)">
+  <rect width="${CW}" height="${CH}" fill="url(#h)"/>
+  ${emblem}
+  <rect width="${CW}" height="${CH}" fill="url(#fade)"/>
+  <rect width="${CW}" height="2" fill="url(#top)"/>
+</g>
+<rect x=".5" y=".5" width="${CW - 1}" height="${CH - 1}" rx="8" fill="none" stroke="${t.line}"/>
+<g>
+<text x="24" y="36" class="mono" font-size="11" letter-spacing="1.6" fill="${t.accent}">${eyebrow}</text>
 <text x="${CW - 24}" y="36" text-anchor="end" class="mono" font-size="11" letter-spacing="1.6" fill="${stateCol}">${STATES[p.state].toUpperCase()}</text>
-<text x="24" y="76" font-size="23" font-weight="800" letter-spacing="-.3" fill="${t.text}">${esc(p.name)}<tspan fill="${t.accent}">.</tspan></text>
+<text x="24" y="76" font-size="23" font-weight="800" letter-spacing="-.3" fill="${t.text}">${esc(p.name)}<tspan fill="${hue}">.</tspan></text>
 <text x="24" y="108" font-size="14" fill="${t.muted}">${esc(p.sub[0])}</text>
 <text x="24" y="129" font-size="14" fill="${t.muted}">${esc(p.sub[1])}</text>
 ${tags}
