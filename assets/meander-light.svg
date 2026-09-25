@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="34" viewBox="0 0 900 34" role="img" aria-label="">
+<style>
+
+text{font-family:'Jakarta', 'Segoe UI', system-ui, sans-serif}
+.mono{font-family:'JB', Consolas, ui-monospace, monospace}
+.r{opacity:0;animation:reveal .7s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes reveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0s!important}}
+</style>
+<g transform="translate(0 7)"><g fill="none" stroke="#7c5cff" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" opacity="0.45"><path d="M0 18 V0 H13.3 V13.5 H5 V6.3 H8.7 M20 18 V0 H33.3 V13.5 H25 V6.3 H28.7 M40 18 V0 H53.3 V13.5 H45 V6.3 H48.7 M60 18 V0 H73.3 V13.5 H65 V6.3 H68.7 M80 18 V0 H93.3 V13.5 H85 V6.3 H88.7 M100 18 V0 H113.3 V13.5 H105 V6.3 H108.7 M120 18 V0 H133.3 V13.5 H125 V6.3 H128.7 M140 18 V0 H153.3 V13.5 H145 V6.3 H148.7 M160 18 V0 H173.3 V13.5 H165 V6.3 H168.7 M180 18 V0 H193.3 V13.5 H185 V6.3 H188.7 M200 18 V0 H213.3 V13.5 H205 V6.3 H208.7 M220 18 V0 H233.3 V13.5 H225 V6.3 H228.7 M240 18 V0 H253.3 V13.5 H245 V6.3 H248.7 M260 18 V0 H273.3 V13.5 H265 V6.3 H268.7 M280 18 V0 H293.3 V13.5 H285 V6.3 H288.7 M300 18 V0 H313.3 V13.5 H305 V6.3 H308.7 M320 18 V0 H333.3 V13.5 H325 V6.3 H328.7 M340 18 V0 H353.3 V13.5 H345 V6.3 H348.7 M360 18 V0 H373.3 V13.5 H365 V6.3 H368.7 M380 18 V0 H393.3 V13.5 H385 V6.3 H388.7 M400 18 V0 H413.3 V13.5 H405 V6.3 H408.7"/><path d="M0 18 H420"/></g></g>
+<g transform="translate(480 7)"><g fill="none" stroke="#7c5cff" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" opacity="0.45"><path d="M0 18 V0 H13.3 V13.5 H5 V6.3 H8.7 M20 18 V0 H33.3 V13.5 H25 V6.3 H28.7 M40 18 V0 H53.3 V13.5 H45 V6.3 H48.7 M60 18 V0 H73.3 V13.5 H65 V6.3 H68.7 M80 18 V0 H93.3 V13.5 H85 V6.3 H88.7 M100 18 V0 H113.3 V13.5 H105 V6.3 H108.7 M120 18 V0 H133.3 V13.5 H125 V6.3 H128.7 M140 18 V0 H153.3 V13.5 H145 V6.3 H148.7 M160 18 V0 H173.3 V13.5 H165 V6.3 H168.7 M180 18 V0 H193.3 V13.5 H185 V6.3 H188.7 M200 18 V0 H213.3 V13.5 H205 V6.3 H208.7 M220 18 V0 H233.3 V13.5 H225 V6.3 H228.7 M240 18 V0 H253.3 V13.5 H245 V6.3 H248.7 M260 18 V0 H273.3 V13.5 H265 V6.3 H268.7 M280 18 V0 H293.3 V13.5 H285 V6.3 H288.7 M300 18 V0 H313.3 V13.5 H305 V6.3 H308.7 M320 18 V0 H333.3 V13.5 H325 V6.3 H328.7 M340 18 V0 H353.3 V13.5 H345 V6.3 H348.7 M360 18 V0 H373.3 V13.5 H365 V6.3 H368.7 M380 18 V0 H393.3 V13.5 H385 V6.3 H388.7 M400 18 V0 H413.3 V13.5 H405 V6.3 H408.7"/><path d="M0 18 H420"/></g></g>
+<circle cx="450" cy="17" r="5" fill="#7c5cff"/><circle cx="450" cy="17" r="11" fill="none" stroke="#7c5cff" opacity=".4"/>
+</svg>
