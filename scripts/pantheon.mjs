@@ -158,14 +158,54 @@ function memory() {
   }).join('');
   return grid + bell + wisps + book;
 }
+// ─── Portfolio · Apollon : la lyre devant le soleil ─────────────────────────
+function lyre() {
+  const sun = `<g transform="translate(${CX} 430)">
+    <circle r="150" opacity=".55"/><circle r="118" opacity=".3" stroke-dasharray="4 12"/>
+    ${Array.from({length: 24}, (_, i) => `<line x1="0" y1="-${i % 2 ? 180 : 172}" x2="0" y2="-${i % 2 ? 214 : 250}" transform="rotate(${i * 15})" opacity="${i % 2 ? 0.5 : 0.9}"/>`).join('')}
+  </g>`;
+  const arm = (s) => `<path d="M${CX + s * 70} 900 C${CX + s * 170} 820 ${CX + s * 190} 690 ${CX + s * 120} 600 C${CX + s * 80} 550 ${CX + s * 110} 505 ${CX + s * 160} 500" stroke-width="7"/>
+    <circle cx="${CX + s * 168}" cy="500" r="12" fill="currentColor"/>`;
+  const box = `<path d="M${CX - 95} 895 C${CX - 95} 965 ${CX + 95} 965 ${CX + 95} 895 Z"/><circle cx="${CX}" cy="918" r="16" opacity=".7"/>`;
+  const bar = `<line x1="${CX - 135}" y1="610" x2="${CX + 135}" y2="610" stroke-width="7"/>`;
+  const strings = [-48, -24, 0, 24, 48].map((d) => `<line x1="${CX + d}" y1="610" x2="${CX + d}" y2="895" stroke-width="2" opacity=".85"/>`).join('');
+  const leaf = (x, y, a) => `<ellipse cx="${x}" cy="${y}" rx="26" ry="9" transform="rotate(${a} ${x} ${y})" opacity=".6"/>`;
+  const laurel = [0, 1, 2, 3, 4].map((i) => leaf(CX - 230 + i * 12, 1000 - i * 50, -60 + i * 8) + leaf(CX + 230 - i * 12, 1000 - i * 50, 60 - i * 8)).join('');
+  return sun + arm(-1) + arm(1) + bar + strings + box + laurel;
+}
+
+// ─── GameOfLife · Prométhée : le feu volé, au-dessus des cellules ───────────
+function torch() {
+  // grille du Jeu de la vie avec un planeur (glider) et quelques cellules vivantes
+  const gx = 225, gy = 690, c = 50;
+  const alive = [[1, 0], [2, 1], [0, 2], [1, 2], [2, 2], [5, 4], [5, 5], [6, 4], [6, 5], [4, 1], [5, 1], [6, 1]];
+  const cells = [];
+  for (let i = 0; i < 7; i++) for (let j = 0; j < 6; j++) {
+    const on = alive.some(([a, b]) => a === i && b === j);
+    cells.push(`<rect x="${gx + i * c + 5}" y="${gy + j * c + 5}" width="${c - 10}" height="${c - 10}" rx="5" ${on ? 'fill="currentColor" fill-opacity=".3"' : 'opacity=".28"'}/>`);
+  }
+  const flame = `<path d="M${CX} 150 C${CX + 80} 240 ${CX + 92} 320 ${CX + 38} 385 L${CX - 38} 385 C${CX - 92} 320 ${CX - 80} 240 ${CX} 150 Z"/>
+    <path d="M${CX} 250 C${CX + 36} 300 ${CX + 40} 340 ${CX + 14} 375 L${CX - 14} 375 C${CX - 40} 340 ${CX - 36} 300 ${CX} 250 Z" fill="currentColor" fill-opacity=".25"/>`;
+  const handle = `<path d="M${CX - 62} 395 L${CX + 62} 395 L${CX + 40} 450 L${CX - 40} 450 Z"/>
+    <line x1="${CX - 50}" y1="422" x2="${CX + 50}" y2="422" opacity=".5"/>
+    <path d="M${CX - 22} 450 L${CX + 22} 450 L${CX + 12} 640 L${CX - 12} 640 Z"/>`;
+  const r = rng(13);
+  const embers = Array.from({length: 9}, () => {
+    const x = 250 + r() * 300, y = 120 + r() * 250, sz = 8 + r() * 12;
+    return `<rect x="${f(x)}" y="${f(y)}" width="${f(sz)}" height="${f(sz)}" rx="2" opacity="${f(0.3 + r() * 0.5)}"/>`;
+  }).join('');
+  return cells.join('') + handle + flame + embers;
+}
 
 export const PANTHEON = [
   {id: 'chronos', name: 'Chronos', greek: 'ΧΡΟΝΟΣ', god: 'Chronos', role: 'Documentation', hue: '#c4b5fd', deep: '#150f26', art: dial(), seed: 3},
   {id: 'kern', name: 'Kern', greek: 'ΗΦΑΙΣΤΟΣ', god: 'Héphaïstos', role: 'Desktop', hue: '#ff7a3d', deep: '#24110a', art: forge(), seed: 11},
   {id: 'hermes', name: 'Hermès', greek: 'ΕΡΜΗΣ', god: 'Hermès', role: 'Bot Discord', hue: '#9b7dff', deep: '#170f2e', art: wings(), seed: 23},
   {id: 'mnemosyne', name: 'Mnémosyne', greek: 'ΜΝΗΜΟΣΥΝΗ', god: 'Mnémosyne', role: 'Bot PRONOTE', hue: '#f472b6', deep: '#26101d', art: memory(), seed: 53},
-  {id: 'gaia', name: 'EarthQuest', greek: 'ΓΑΙΑ', god: 'Gaïa', role: 'Minecraft', hue: '#5fd068', deep: '#0b1f0d', art: blocks(), seed: 41},
+  {id: 'gaia', name: 'Minecraft', greek: 'ΓΑΙΑ', god: 'Gaïa', role: 'Mods & plugins', hue: '#5fd068', deep: '#0b1f0d', art: blocks(), seed: 41},
   {id: 'athena', name: 'MySchool', greek: 'ΑΘΗΝΑ', god: 'Athéna', role: 'Mobile', hue: '#3fd0c9', deep: '#08201f', art: stars(), seed: 37},
+  {id: 'apollon', name: 'Portfolio', greek: 'ΑΠΟΛΛΩΝ', god: 'Apollon', role: 'Web', hue: '#fcd34d', deep: '#221a06', art: lyre(), seed: 61},
+  {id: 'promethee', name: 'GameOfLife', greek: 'ΠΡΟΜΗΘΕΥΣ', god: 'Prométhée', role: 'Jeu', hue: '#60a5fa', deep: '#0a1628', art: torch(), seed: 71},
 ].map((p) => ({...p, art: p.art.replaceAll('currentColor', p.hue)}));
 
 export const byId = Object.fromEntries(PANTHEON.map((p) => [p.id, p]));

@@ -117,17 +117,19 @@ ${intro ? `<text x="${W / 2}" y="130" text-anchor="middle" font-size="15" fill="
 // Une colonne par divinité, comme le sélecteur de projets de Chronos :
 // fond du projet, étoiles qui scintillent, nom grec en creux, dessin au trait néon.
 both('pantheon', (t, mode) => {
-  const H = 440, GAP = 6, CW = (W - GAP * (PANTHEON.length - 1)) / PANTHEON.length;
+  // deux rangées de quatre colonnes
+  const PER = 4, GAP = 8, CW = (W - GAP * (PER - 1)) / PER, CH = 380;
+  const H = Math.ceil(PANTHEON.length / PER) * (CH + GAP) - GAP;
   const cols = PANTHEON.map((p, i) => {
-    const x = i * (CW + GAP), r = rng(p.seed);
+    const x = (i % PER) * (CW + GAP), y0 = Math.floor(i / PER) * (CH + GAP), r = rng(p.seed);
     const stars = Array.from({ length: 46 }, (_, k) => {
       const tw = k % 4 === 0 ? ` class="tw" style="animation-delay:${(r() * 4).toFixed(2)}s"` : '';
       return `<circle cx="${(r() * AW).toFixed(1)}" cy="${(r() * AH).toFixed(1)}" r="${(1 + r() * 2.4).toFixed(1)}" opacity="${(0.2 + r() * 0.5).toFixed(2)}"${tw}/>`;
     }).join('');
-    return `<g class="r" style="animation-delay:${(0.08 * i).toFixed(2)}s">
-<clipPath id="k${i}"><rect x="${x}" width="${CW}" height="${H}" rx="8"/></clipPath>
+    return `<g class="r" style="animation-delay:${(0.08 * i).toFixed(2)}s"><g transform="translate(0 ${y0})">
+<clipPath id="k${i}"><rect x="${x}" width="${CW}" height="${CH}" rx="8"/></clipPath>
 <g clip-path="url(#k${i})">
-<svg x="${x}" width="${CW}" height="${H}" viewBox="0 0 ${AW} ${AH}" preserveAspectRatio="xMidYMid slice">
+<svg x="${x}" width="${CW}" height="${CH}" viewBox="0 0 ${AW} ${AH}" preserveAspectRatio="xMidYMid slice">
   <defs>
     <linearGradient id="b${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e0d11"/><stop offset="1" stop-color="${p.deep}"/></linearGradient>
     <radialGradient id="g${i}" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="${p.hue}" stop-opacity=".4"/><stop offset="1" stop-color="${p.hue}" stop-opacity="0"/></radialGradient>
@@ -139,15 +141,15 @@ both('pantheon', (t, mode) => {
   <text x="-${AH / 2}" y="300" transform="rotate(-90)" text-anchor="middle" font-weight="800" font-size="150" letter-spacing="22" fill="none" stroke="${p.hue}" stroke-opacity=".2" stroke-width="2.5">${p.greek}</text>
   <g transform="translate(400 470) scale(.9) translate(-400 -600)" fill="none" stroke="${p.hue}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#neon)" class="breathe" style="animation-delay:${-i * 0.7}s">${p.art}</g>
 </svg>
-<rect x="${x}" y="${H - 150}" width="${CW}" height="150" fill="url(#shade)"/>
+<rect x="${x}" y="${CH - 150}" width="${CW}" height="150" fill="url(#shade)"/>
 </g>
-<text x="${x + 16}" y="${H - 76}" class="mono" font-size="10" letter-spacing="1.4" fill="#6a6572">${String(i + 1).padStart(2, '0')} / ${String(PANTHEON.length).padStart(2, '0')}</text>
-<text x="${x + 16}" y="${H - 52}" class="mono" font-size="10" letter-spacing="1.4" fill="${p.hue}">${esc(p.name.toUpperCase())}</text>
-<text x="${x + 16}" y="${H - 22}" font-size="${p.god.length > 8 ? 19 : 22}" font-weight="800" letter-spacing="-.4" fill="#f2f0f4">${esc(p.god)}<tspan fill="${p.hue}">.</tspan></text>
-<rect x="${x + 0.5}" y=".5" width="${CW - 1}" height="${H - 1}" rx="8" fill="none" stroke="${mode === 'dark' ? t.line : '#2a2630'}"/>
-</g>`;
+<text x="${x + 16}" y="${CH - 76}" class="mono" font-size="10" letter-spacing="1.4" fill="#6a6572">${String(i + 1).padStart(2, '0')} / ${String(PANTHEON.length).padStart(2, '0')}</text>
+<text x="${x + 16}" y="${CH - 52}" class="mono" font-size="10" letter-spacing="1.4" fill="${p.hue}">${esc(p.name.toUpperCase())}</text>
+<text x="${x + 16}" y="${CH - 22}" font-size="24" font-weight="800" letter-spacing="-.4" fill="#f2f0f4">${esc(p.god)}<tspan fill="${p.hue}">.</tspan></text>
+<rect x="${x + 0.5}" y=".5" width="${CW - 1}" height="${CH - 1}" rx="8" fill="none" stroke="${mode === 'dark' ? t.line : '#2a2630'}"/>
+</g></g>`;
   }).join('\n');
-  return svg(W, H, 'Le panthéon : Chronos, Héphaïstos, Hermès, Mnémosyne, Gaïa, Athéna', `${fonts(800, 'mono')}
+  return svg(W, H, 'Le panthéon : Chronos, Héphaïstos, Hermès, Mnémosyne, Gaïa, Athéna, Apollon, Prométhée', `${fonts(800, 'mono')}
 .breathe{animation:breathe 6s ease-in-out infinite}
 @keyframes breathe{0%,100%{opacity:1}50%{opacity:.6}}
 .tw{animation:tw 4s ease-in-out infinite}
@@ -183,16 +185,16 @@ const PROJECTS = [
   { file: 'mnemosyne', god: 'mnemosyne', cat: 'Bot PRONOTE', state: 'live', name: 'Mnémosyne',
     sub: ['Open source. Brief quotidien en image,', 'notifications en temps réel, sac du lendemain.'],
     tags: ['TypeScript', 'discord.js', 'pawnote'] },
-  { file: 'earthquest', god: 'gaia', cat: 'Minecraft', state: 'wip', name: 'EarthQuest',
-    sub: ['Serveur Minecraft moddé, Java 1.7.10 et Bedrock :', 'mods Forge, plugins Bukkit, API, site et panel.'],
+  { file: 'minecraft', god: 'gaia', cat: 'Mods & plugins', state: 'wip', name: 'Minecraft',
+    sub: ['Mes mods Forge et plugins Bukkit / PocketMine,', 'Java et Bedrock, pour EarthQuest et EarthReborn.'],
     tags: ['Java', 'Forge', 'Bukkit', 'Gradle'] },
   { file: 'myschool', god: 'athena', cat: 'Mobile & desktop', state: 'live', name: 'MySchool',
     sub: ['Mon classeur archivé sur Windows et Android.', 'Le scanner est piloté en HTTP, sans driver.'],
     tags: ['Flutter', 'Dart', 'Supabase'] },
-  { file: 'portfolio', cat: 'Web', state: 'wip', name: 'Portfolio',
+  { file: 'portfolio', god: 'apollon', cat: 'Web', state: 'wip', name: 'Portfolio',
     sub: ['Site bilingue piloté par la base, avec un studio', 'local pour tout modifier sans toucher au code.'],
     tags: ['Next.js', 'Prisma', 'PostgreSQL'] },
-  { file: 'gameoflife', cat: 'Jeu · temps réel', state: 'wip', name: 'GameOfLife',
+  { file: 'gameoflife', god: 'promethee', cat: 'Jeu', state: 'wip', name: 'GameOfLife',
     sub: ['Jeu multijoueur : API temps réel, client mobile', "et panel d'administration complet."],
     tags: ['TypeScript', 'Fastify', 'Socket.IO'] },
 ];

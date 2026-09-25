@@ -59,7 +59,7 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
   <img src="./assets/section-projects-dark.svg" width="100%" alt="Ce que j'ai construit"/>
 </picture></p>
 
-<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/pantheon-light.svg"/><img src="./assets/pantheon-dark.svg" width="100%" alt="Le panthéon : Chronos, Héphaïstos, Hermès, Mnémosyne, Gaïa, Athéna"/></picture></p>
+<p align="center"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/pantheon-light.svg"/><img src="./assets/pantheon-dark.svg" width="100%" alt="Le panthéon : Chronos, Héphaïstos, Hermès, Mnémosyne, Gaïa, Athéna, Apollon, Prométhée"/></picture></p>
 
 <p align="center">
   <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/chronos-light.svg"/><img src="./assets/projects/chronos-dark.svg" width="49%" alt="Chronos · la doc de tous mes projets"/></picture>
@@ -70,12 +70,12 @@ Aujourd'hui je passe en <b>freelance</b> et j'ouvre mon agenda à de nouveaux pr
   <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/mnemosyne-light.svg"/><img src="./assets/projects/mnemosyne-dark.svg" width="49%" alt="Mnémosyne · bot PRONOTE"/></picture>
 </p>
 <p align="center">
-  <a href="https://github.com/EarthQuestMc"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/earthquest-light.svg"/><img src="./assets/projects/earthquest-dark.svg" width="49%" alt="EarthQuest · Gaïa"/></picture></a>
+  <a href="https://github.com/EarthQuestMc"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/minecraft-light.svg"/><img src="./assets/projects/minecraft-dark.svg" width="49%" alt="Minecraft · Gaïa"/></picture></a>
   <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/myschool-light.svg"/><img src="./assets/projects/myschool-dark.svg" width="49%" alt="MySchool · Athéna"/></picture>
 </p>
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/portfolio-light.svg"/><img src="./assets/projects/portfolio-dark.svg" width="49%" alt="Portfolio"/></picture>
-  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/gameoflife-light.svg"/><img src="./assets/projects/gameoflife-dark.svg" width="49%" alt="GameOfLife"/></picture>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/portfolio-light.svg"/><img src="./assets/projects/portfolio-dark.svg" width="49%" alt="Portfolio · Apollon"/></picture>
+  <picture><source media="(prefers-color-scheme: light)" srcset="./assets/projects/gameoflife-light.svg"/><img src="./assets/projects/gameoflife-dark.svg" width="49%" alt="GameOfLife · Prométhée"/></picture>
 </p>
 
 <details>
