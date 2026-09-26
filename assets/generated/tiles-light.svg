@@ -10,18 +10,18 @@ text{font-family:'Jakarta', 'Segoe UI', system-ui, sans-serif}
 </style>
 <g class="r" style="animation-delay:0s">
 <rect x="0.5" y=".5" width="216.5" height="119" rx="8" fill="#f3f1f3" stroke="#e2dee4"/>
-<text x="108.75" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#1a171c">1 093<tspan fill="#7c5cff">.</tspan></text>
+<text x="108.75" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#1a171c">1 100<tspan fill="#7c5cff">.</tspan></text>
 <text x="108.75" y="90" text-anchor="middle" font-size="13" fill="#6a6472">contributions en 12 mois</text></g>
 <g class="r" style="animation-delay:0.07s">
 <rect x="228" y=".5" width="216.5" height="119" rx="8" fill="#f3f1f3" stroke="#e2dee4"/>
-<text x="336.25" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#1a171c">1 083<tspan fill="#7c5cff">.</tspan></text>
+<text x="336.25" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#1a171c">1 089<tspan fill="#7c5cff">.</tspan></text>
 <text x="336.25" y="90" text-anchor="middle" font-size="13" fill="#6a6472">commits</text></g>
 <g class="r" style="animation-delay:0.14s">
 <rect x="455.5" y=".5" width="216.5" height="119" rx="8" fill="#f3f1f3" stroke="#e2dee4"/>
-<text x="563.75" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#1a171c">135<tspan fill="#7c5cff"> j</tspan></text>
+<text x="563.75" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#1a171c">136<tspan fill="#7c5cff"> j</tspan></text>
 <text x="563.75" y="90" text-anchor="middle" font-size="13" fill="#6a6472">jours actifs</text></g>
 <g class="r" style="animation-delay:0.21000000000000002s">
 <rect x="683" y=".5" width="216.5" height="119" rx="8" fill="#f3f1f3" stroke="#e2dee4"/>
-<text x="791.25" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#1a171c">12<tspan fill="#7c5cff"> j</tspan></text>
+<text x="791.25" y="60" text-anchor="middle" font-size="32" font-weight="800" fill="#1a171c">13<tspan fill="#7c5cff"> j</tspan></text>
 <text x="791.25" y="90" text-anchor="middle" font-size="13" fill="#6a6472">meilleure série</text></g>
 </svg>
