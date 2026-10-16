@@ -47,10 +47,10 @@ jobs:
       - uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          # couleurs de la DA : la rampe violette du calendrier
+          # couleurs de la DA : la rampe du calendrier, de l'encre vers le violet désaturé
           outputs: |
-            dist/snake-dark.svg?color_snake=#9b7dff&color_dots=#1d1a23,#2e2450,#4b3a8f,#7458d6,#b3a0ff
-            dist/snake-light.svg?color_snake=#7c5cff&color_dots=#e9e6ea,#d9ceff,#ae98ff,#7c5cff,#4a2fc4
+            dist/snake-dark.svg?color_snake=#ece8df&color_dots=#1b1b18,#34314a,#544d80,#8278bd,#b3a7e8
+            dist/snake-light.svg?color_snake=#1b1a17&color_dots=#e2ddd1,#cfc8e4,#a59bd6,#7a6cc2,#5a4bb0
 
       - uses: crazy-max/ghaction-github-pages@v4
         with:

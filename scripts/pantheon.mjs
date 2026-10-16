@@ -1,4 +1,4 @@
-// Le panthéon : chaque projet porte le nom d'une divinité grecque et son dessin au trait néon.
+// Le panthéon : chaque projet porte le nom d'une divinité grecque et son dessin au trait.
 // Mêmes dessins que les fonds de Chronos (la doc de mes projets), sur une toile de 800 × 1200.
 export const W = 800, H = 1200;
 const CX = 400;
@@ -202,27 +202,41 @@ function torch() {
   return cells.join('') + handle + flame + embers;
 }
 
+// ─── Calliope : la plume et le rouleau ──────────────────────────────────────
+function quill() {
+  // le rouleau, déroulé en bas, avec ses lignes d'écriture
+  const scroll = `<path d="M170 820 H630 V990 H170 Z" opacity=".9"/>
+    <path d="M170 820 C140 820 140 860 170 860" /><path d="M630 990 C660 990 660 950 630 950"/>
+    <ellipse cx="170" cy="905" rx="22" ry="85" opacity=".7"/><ellipse cx="630" cy="905" rx="22" ry="85" opacity=".7"/>
+    ${[860, 892, 924, 956].map((y, i) => `<line x1="220" y1="${y}" x2="${[580, 540, 570, 470][i]}" y2="${y}" stroke-width="3" opacity=".5"/>`).join('')}`;
+  // la plume : le rachis courbe et ses barbes
+  const spine = 'M300 800 C360 640 440 470 560 250';
+  const r = rng(13);
+  const barbs = Array.from({length: 22}, (_, i) => {
+    const k = 0.12 + i * 0.038, x = 300 + (560 - 300) * k + Math.sin(k * 3) * 10, y = 800 - (800 - 250) * k;
+    const l = 40 + Math.sin(k * Math.PI) * 90, a = -0.35 - r() * 0.15;
+    return `<line x1="${f(x)}" y1="${f(y)}" x2="${f(x - Math.cos(a) * l)}" y2="${f(y + Math.sin(a) * l * -1 - 20)}" stroke-width="2" opacity="${f(0.45 + r() * 0.4)}"/>
+      <line x1="${f(x)}" y1="${f(y)}" x2="${f(x + Math.cos(a) * l * 0.8)}" y2="${f(y - l * 0.45)}" stroke-width="2" opacity="${f(0.35 + r() * 0.4)}"/>`;
+  }).join('');
+  const nib = `<path d="M300 800 L284 846 L296 838 L306 808 Z" fill="currentColor"/>`;
+  const ink = `<circle cx="280" cy="862" r="6" fill="currentColor" opacity=".7"/>`;
+  return scroll + `<path d="${spine}" stroke-width="5"/>` + barbs + nib + ink;
+}
+
+// Teintes désaturées, les mêmes que sur chaque vitrine : `hue` en sombre, `hueLight` en clair.
 export const PANTHEON = [
-  {id: 'chronos', name: 'Chronos', greek: 'ΧΡΟΝΟΣ', god: 'Chronos', role: 'Documentation', hue: '#c4b5fd', deep: '#150f26', art: dial(), seed: 3},
-  {id: 'kern', name: 'Kern', greek: 'ΗΦΑΙΣΤΟΣ', god: 'Héphaïstos', role: 'Desktop', hue: '#ff7a3d', deep: '#24110a', art: forge(), seed: 11},
-  {id: 'hermes', name: 'Hermès', greek: 'ΕΡΜΗΣ', god: 'Hermès', role: 'Bot Discord', hue: '#9b7dff', deep: '#170f2e', art: wings(), seed: 23},
-  {id: 'mnemosyne', name: 'Mnémosyne', greek: 'ΜΝΗΜΟΣΥΝΗ', god: 'Mnémosyne', role: 'Bot PRONOTE', hue: '#f472b6', deep: '#26101d', art: memory(), seed: 53},
-  {id: 'gaia', name: 'Minecraft', greek: 'ΓΑΙΑ', god: 'Gaïa', role: 'Mods & plugins', hue: '#5fd068', deep: '#0b1f0d', art: blocks(), seed: 41},
-  {id: 'athena', name: 'MySchool', greek: 'ΑΘΗΝΑ', god: 'Athéna', role: 'Mobile', hue: '#3fd0c9', deep: '#08201f', art: stars(), seed: 37},
-  {id: 'apollon', name: 'Portfolio', greek: 'ΑΠΟΛΛΩΝ', god: 'Apollon', role: 'Web', hue: '#fcd34d', deep: '#221a06', art: lyre(), seed: 61},
-  {id: 'promethee', name: 'GameOfLife', greek: 'ΠΡΟΜΗΘΕΥΣ', god: 'Prométhée', role: 'Jeu', hue: '#60a5fa', deep: '#0a1628', art: torch(), seed: 71},
-].map((p) => ({...p, art: p.art.replaceAll('currentColor', p.hue)}));
+  {id: 'chronos', name: 'Chronos', greek: 'ΧΡΟΝΟΣ', god: 'Chronos', role: 'Documentation', hue: '#d6bd84', hueLight: '#7f6224', art: dial(), seed: 3},
+  {id: 'kern', name: 'Kern', greek: 'ΗΦΑΙΣΤΟΣ', god: 'Héphaïstos', role: 'Desktop', hue: '#d9906a', hueLight: '#9a4a22', art: forge(), seed: 11},
+  {id: 'hermes', name: 'Hermès', greek: 'ΕΡΜΗΣ', god: 'Hermès', role: 'Bot Discord', hue: '#b3a7e8', hueLight: '#5a4bb0', art: wings(), seed: 23},
+  {id: 'mnemosyne', name: 'Mnémosyne', greek: 'ΜΝΗΜΟΣΥΝΗ', god: 'Mnémosyne', role: 'Bot PRONOTE', hue: '#d99bb8', hueLight: '#8e3f63', art: memory(), seed: 53},
+  {id: 'calliope', name: 'Calliope', greek: 'ΚΑΛΛΙΟΠΗ', god: 'Calliope', role: 'Bac de français', hue: '#b3c27f', hueLight: '#4d6121', art: quill(), seed: 83},
+  {id: 'athena', name: 'MySchool', greek: 'ΑΘΗΝΑ', god: 'Athéna', role: 'Mobile', hue: '#8fc2bd', hueLight: '#2c6e6a', art: stars(), seed: 37},
+  {id: 'gaia', name: 'Minecraft', greek: 'ΓΑΙΑ', god: 'Gaïa', role: 'Mods & plugins', hue: '#a3c48a', hueLight: '#4a6e2c', art: blocks(), seed: 41},
+  {id: 'apollon', name: 'Portfolio', greek: 'ΑΠΟΛΛΩΝ', god: 'Apollon', role: 'Web', hue: '#d9a3a0', hueLight: '#8f3a3a', art: lyre(), seed: 61},
+  {id: 'promethee', name: 'GameOfLife', greek: 'ΠΡΟΜΗΘΕΥΣ', god: 'Prométhée', role: 'Jeu', hue: '#92add6', hueLight: '#34558a', art: torch(), seed: 71},
+];
+
+/** Le dessin d'une divinité, tracé dans une couleur donnée. */
+export const art = (p, color) => p.art.replaceAll('currentColor', color);
 
 export const byId = Object.fromEntries(PANTHEON.map((p) => [p.id, p]));
-
-/** Frise de grecques (méandre) : une clé en spirale tous les `step` px, posée sur un filet. */
-export function meander(width, {step = 24, h = 20, color, opacity = 1} = {}) {
-  const n = Math.floor(width / step), x0 = (width - n * step) / 2;
-  const u = step / 6, k = h / 4; // grille : 6 unités de large, 4 de haut
-  let d = '';
-  for (let i = 0; i < n; i++) {
-    const x = x0 + i * step;
-    d += `M${f(x)} ${f(h)} V0 H${f(x + 4 * u)} V${f(3 * k)} H${f(x + 1.5 * u)} V${f(1.4 * k)} H${f(x + 2.6 * u)} `;
-  }
-  return `<g fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" opacity="${opacity}"><path d="${d.trim()}"/><path d="M${f(x0)} ${f(h)} H${f(x0 + n * step)}"/></g>`;
-}

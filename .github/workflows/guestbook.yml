@@ -44,9 +44,9 @@ jobs:
             const [before, rest] = readme.split(START);
             const [block, after] = rest.split(END);
 
-            const entries = block.split('\n').filter((l) => l.startsWith('<p align="center"><a href="https://github.com/'));
+            const entries = block.split('\n').filter((l) => l.startsWith('<p') && l.includes('<a href="https://github.com/'));
             const date = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', timeZone: 'Europe/Paris' });
-            entries.unshift(`<p align="center"><a href="https://github.com/${login}"><b>@${login}</b></a> — ${message} <sub>· ${date}</sub></p>`);
+            entries.unshift(`<p><a href="https://github.com/${login}"><b>@${login}</b></a> — ${message} <sub>· ${date}</sub></p>`);
 
             fs.writeFileSync('README.md', `${before}${START}\n${entries.slice(0, 8).join('\n')}\n${END}${after}`);
 

@@ -1,5 +1,6 @@
-// Palette de la DA Salks. (identique au portfolio, apps/web/src/app/globals.css) :
-// deux thèmes, un seul violet, Plus Jakarta Sans + JetBrains Mono.
+// Palette de la DA Salks. (identique aux vitrines, salks-kit/vitrine.css) :
+// page imprimée la nuit. Fond encre chaud ou papier, titres en serif, filets fins
+// plutôt que cartes, aucune lueur ni dégradé décoratif. Une couleur par projet.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,40 +9,43 @@ export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 export const THEMES = {
   dark: {
-    bg: '#0e0d11', panel: '#17151b', panelLine: '#232028', card: '#131216', line: '#232028', lineStrong: '#322e39',
-    text: '#f2f0f4', muted: '#9a95a3', faint: '#6a6572',
-    accent: '#9b7dff', accentSoft: '#211a36', onAccent: '#100c1c',
-    live: '#34d399', wip: '#fbbf24',
-    // rampe du calendrier : du panneau vers le violet
-    ramp: ['#1d1a23', '#2e2450', '#4b3a8f', '#7458d6', '#b3a0ff'],
+    bg: '#0d0d0c', bg2: '#141412', bg3: '#1b1b18', rule: '#262622', rule2: '#393833',
+    text: '#ece8df', muted: '#aaa598', faint: '#7a766c', onSolid: '#0d0d0c',
+    accent: '#b3a7e8', // violet Salks., désaturé
+    live: '#7fbf8e', wip: '#d9b25c',
+    // rampe du calendrier : de l'encre vers le violet
+    ramp: ['#1b1b18', '#34314a', '#544d80', '#8278bd', '#b3a7e8'],
   },
   light: {
-    bg: '#faf9fa', panel: '#e9e6ea', panelLine: '#dcd8de', card: '#f3f1f3', line: '#e2dee4', lineStrong: '#cfc9d4',
-    text: '#1a171c', muted: '#6a6472', faint: '#97919e',
-    accent: '#7c5cff', accentSoft: '#ece7ff', onAccent: '#ffffff',
-    live: '#059669', wip: '#d97706',
-    ramp: ['#e9e6ea', '#d9ceff', '#ae98ff', '#7c5cff', '#4a2fc4'],
+    bg: '#f3f0e8', bg2: '#ebe7dd', bg3: '#e2ddd1', rule: '#d8d2c4', rule2: '#bfb8a8',
+    text: '#1b1a17', muted: '#57534a', faint: '#858073', onSolid: '#f3f0e8',
+    accent: '#5a4bb0',
+    live: '#2f7a45', wip: '#9a6a12',
+    ramp: ['#e2ddd1', '#cfc8e4', '#a59bd6', '#7a6cc2', '#5a4bb0'],
   },
 };
 
 const font = (file) => readFileSync(join(ROOT, 'scripts', 'fonts', file)).toString('base64');
 const FACES = {
-  400: ['Jakarta', 400, 'plus-jakarta-sans-latin-400-normal.woff2'],
-  600: ['Jakarta', 600, 'plus-jakarta-sans-latin-600-normal.woff2'],
-  800: ['Jakarta', 800, 'plus-jakarta-sans-latin-800-normal.woff2'],
-  mono: ['JB', 400, 'jetbrains-mono-latin-400-normal.woff2'],
+  400: ['Jakarta', 400, 'normal', 'plus-jakarta-sans-latin-400-normal.woff2'],
+  600: ['Jakarta', 600, 'normal', 'plus-jakarta-sans-latin-600-normal.woff2'],
+  800: ['Jakarta', 800, 'normal', 'plus-jakarta-sans-latin-800-normal.woff2'],
+  mono: ['JB', 400, 'normal', 'jetbrains-mono-latin-400-normal.woff2'],
+  serif: ['Serif', 400, 'normal', 'source-serif-4-latin-400-normal.woff2'],
+  italic: ['Serif', 400, 'italic', 'source-serif-4-latin-400-italic.woff2'],
 };
 
 /** @font-face embarqués : un SVG servi en <img> ne peut pas charger de police externe. */
 export function fonts(...keys) {
   return keys.map((k) => {
-    const [family, weight, file] = FACES[k];
-    return `@font-face{font-family:'${family}';font-weight:${weight};src:url(data:font/woff2;base64,${font(file)}) format('woff2')}`;
+    const [family, weight, style, file] = FACES[k];
+    return `@font-face{font-family:'${family}';font-weight:${weight};font-style:${style};src:url(data:font/woff2;base64,${font(file)}) format('woff2')}`;
   }).join('\n');
 }
 
 export const SANS = "'Jakarta', 'Segoe UI', system-ui, sans-serif";
 export const MONO = "'JB', Consolas, ui-monospace, monospace";
+export const SERIF = "'Serif', Georgia, 'Times New Roman', serif";
 
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -51,7 +55,24 @@ export function write(rel, content) {
   writeFileSync(p, content);
 }
 
-// Apparition douce, comme le composant <Reveal> du portfolio.
+/** Numéros grecs des sections, comme sur les vitrines. */
+export const GREEK_NUM = ['α′', 'β′', 'γ′', 'δ′', 'ε′', 'ϛ′', 'ζ′', 'η′', 'θ′'];
+
+// Apparition douce, comme le composant <Reveal> des sites.
 export const REVEAL = `.r{opacity:0;animation:reveal .7s cubic-bezier(.22,1,.36,1) forwards}
-@keyframes reveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0s!important}}`;
+
+/** Enveloppe SVG commune : polices, classes de texte, apparition. */
+export const svg = (w, h, label, css, body) => `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">
+<style>
+${css}
+text{font-family:${SANS}}
+.mono{font-family:${MONO}}
+.serif{font-family:${SERIF}}
+.it{font-family:${SERIF};font-style:italic}
+${REVEAL}
+</style>
+${body}
+</svg>
+`;
