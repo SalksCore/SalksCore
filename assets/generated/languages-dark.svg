@@ -15,13 +15,13 @@ text{font-family:'Jakarta', 'Segoe UI', system-ui, sans-serif}
 </style>
 <line x1="0" y1=".5" x2="900" y2=".5" stroke="#393833"/>
 <text x="0" y="40" class="mono" font-size="11" letter-spacing="1.6" fill="#7a766c">LANGAGES</text>
-<g transform="translate(0 62)"><g class="bar"><rect x="0.0" width="635.6" height="8" fill="#b3a7e8"/><rect x="637.6" width="200.2" height="8" fill="#8278bd"/><rect x="839.9" width="40.9" height="8" fill="#544d80"/><rect x="882.8" width="15.2" height="8" fill="#34314a"/></g></g>
+<g transform="translate(0 62)"><g class="bar"><rect x="0.0" width="636.0" height="8" fill="#b3a7e8"/><rect x="638.0" width="200.0" height="8" fill="#8278bd"/><rect x="840.0" width="40.8" height="8" fill="#544d80"/><rect x="882.8" width="15.2" height="8" fill="#34314a"/></g></g>
 <g class="r" style="animation-delay:0.40s"><rect x="0" y="109" width="9" height="9" fill="#b3a7e8"/>
 <text x="18" y="118" font-size="14.5" fill="#ece8df">TypeScript</text>
-<text x="201" y="118" text-anchor="end" class="it" font-size="15" fill="#aaa598">70.8 %</text></g>
+<text x="201" y="118" text-anchor="end" class="it" font-size="15" fill="#aaa598">70.9 %</text></g>
 <g class="r" style="animation-delay:0.46s"><rect x="249" y="109" width="9" height="9" fill="#8278bd"/>
 <text x="267" y="118" font-size="14.5" fill="#ece8df">CSS</text>
-<text x="426" y="118" text-anchor="end" class="it" font-size="15" fill="#aaa598">22.5 %</text></g>
+<text x="426" y="118" text-anchor="end" class="it" font-size="15" fill="#aaa598">22.4 %</text></g>
 <g class="r" style="animation-delay:0.52s"><rect x="474" y="109" width="9" height="9" fill="#544d80"/>
 <text x="492" y="118" font-size="14.5" fill="#ece8df">JavaScript</text>
 <text x="651" y="118" text-anchor="end" class="it" font-size="15" fill="#aaa598">4.8 %</text></g>
