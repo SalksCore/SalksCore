@@ -13,13 +13,13 @@ text{font-family:'Jakarta', 'Segoe UI', system-ui, sans-serif}
 <line x1="0" y1=".5" x2="900" y2=".5" stroke="#393833"/>
 <g class="r" style="animation-delay:0s">
 <text x="0" y="40" class="mono" font-size="11" letter-spacing="1.4" fill="#7a766c">CONTRIBUTIONS EN 12 MOIS</text>
-<text x="0" y="94" class="serif" font-size="46" letter-spacing="-1" fill="#ece8df">1 299</text></g>
+<text x="0" y="94" class="serif" font-size="46" letter-spacing="-1" fill="#ece8df">1 319</text></g>
 <g class="r" style="animation-delay:0.07s"><line x1="225.5" y1="0" x2="225.5" y2="124" stroke="#262622"/>
 <text x="253" y="40" class="mono" font-size="11" letter-spacing="1.4" fill="#7a766c">COMMITS</text>
-<text x="253" y="94" class="serif" font-size="46" letter-spacing="-1" fill="#ece8df">1 279</text></g>
+<text x="253" y="94" class="serif" font-size="46" letter-spacing="-1" fill="#ece8df">1 299</text></g>
 <g class="r" style="animation-delay:0.14s"><line x1="450.5" y1="0" x2="450.5" y2="124" stroke="#262622"/>
 <text x="478" y="40" class="mono" font-size="11" letter-spacing="1.4" fill="#7a766c">JOURS ACTIFS</text>
-<text x="478" y="94" class="serif" font-size="46" letter-spacing="-1" fill="#ece8df">147 j</text></g>
+<text x="478" y="94" class="serif" font-size="46" letter-spacing="-1" fill="#ece8df">148 j</text></g>
 <g class="r" style="animation-delay:0.21000000000000002s"><line x1="675.5" y1="0" x2="675.5" y2="124" stroke="#262622"/>
 <text x="703" y="40" class="mono" font-size="11" letter-spacing="1.4" fill="#7a766c">MEILLEURE SÉRIE</text>
 <text x="703" y="94" class="serif" font-size="46" letter-spacing="-1" fill="#ece8df">15 j</text></g>
